@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação da Marca - Escola Transição</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #001f5c;
+            --primary-blue: #003b9e;
+            --secondary-blue: #005ce6;
+            --light-blue: #e6f0ff;
+            --accent-cyan: #00a8e8;
+            --bg-light: #f4f7fa;
+            --white: #ffffff;
+            --text-dark: #1a202c;
+            --text-gray: #4a5568;
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+            --shadow-sm: 0 2px 4px rgba(0, 31, 92, 0.05);
+            --shadow-md: 0 10px 20px rgba(0, 31, 92, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 31, 92, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 1000px;
+            animation: fadeInUp 1s ease-out;
+            padding: 40px;
+        }
+
+        .hero-logo-img {
+            max-width: 900px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 16px;
+            display: block;
+            filter: drop-shadow(0 10px 20px rgba(0, 31, 92, 0.1));
+        }
+
+        .hero-logo-icon {
+            font-size: 80px;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+            display: inline-block;
+            background: white;
+            width: 160px;
+            height: 160px;
+            line-height: 160px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            color: var(--primary-dark);
+        }
+        
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            font-weight: 500;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            color: var(--text-gray);
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .hero p strong {
+            font-weight: 600;
+            color: var(--secondary-blue);
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: var(--primary-blue);
+            font-size: 24px;
+            animation: bounce 2s infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-15px) translateX(-50%); }
+            60% { transform: translateY(-7px) translateX(-50%); }
+        }
+
+        .animate-transicao {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-blue), var(--accent-cyan), var(--primary-dark));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease infinite, floatText 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes floatText {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Brand DNA Section */
+        .dna-section {
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .pillar-card {
+            background: var(--bg-light);
+            padding: 40px 32px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-dark), var(--secondary-blue));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+            background: var(--white);
+        }
+
+        .pillar-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .pillar-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 24px;
+            transition: all 0.3s ease;
+        }
+
+        .pillar-card:hover .pillar-icon {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .pillar-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        .pillar-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Mascots Section */
+        .mascots-section {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            color: var(--white);
+            position: relative;
+        }
+
+        .mascots-header h2 {
+            color: var(--white);
+        }
+
+        .mascots-container {
+            display: flex;
+            flex-direction: column;
+            gap: 64px;
+        }
+
+        .mascot-row {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .mascot-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .mascot-image-placeholder {
+            flex: 0 0 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            color: rgba(255, 255, 255, 0.5);
+            position: relative;
+            box-shadow: 0 0 40px rgba(0, 168, 232, 0.2);
+        }
+
+        .mascot-info {
+            flex: 1;
+        }
+
+        .mascot-name {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--white);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .mascot-tag {
+            display: inline-block;
+            background: var(--secondary-blue);
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+
+        .mascot-desc {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .mascot-traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .trait-badge {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: var(--radius-full);
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Applications Section */
+        .apps-section {
+            background: var(--bg-light);
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .app-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .app-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .app-image {
+            height: 300px;
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 48px;
+            position: relative;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .facade-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .facade-night {
+            opacity: 0;
+            animation: dayToNight 6s infinite alternate ease-in-out;
+        }
+        
+        @keyframes dayToNight {
+            0%, 25% { opacity: 0; }
+            75%, 100% { opacity: 1; }
+        }
+
+        .interior-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .interior-after {
+            opacity: 0;
+            animation: beforeToAfter 6s infinite alternate ease-in-out;
+            animation-delay: 3s; /* Delay so it doesn't fade exactly at the same time as the facade */
+        }
+        
+        @keyframes beforeToAfter {
+            0%, 25% { opacity: 0; }
+            75%, 100% { opacity: 1; }
+        }
+
+        .app-card.facade .app-image {
+            background: linear-gradient(to bottom, #87CEEB, #e0f2fe);
+        }
+
+        .app-card.interior .app-image {
+            background: linear-gradient(135deg, #f0f9ff, #bae6fd);
+        }
+
+        .app-content {
+            padding: 32px;
+        }
+
+        .app-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        .app-content p {
+            color: var(--text-gray);
+        }
+
+        /* Color Palette */
+        .palette-section {
+            background: var(--white);
+        }
+
+        .colors-container {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            width: 120px;
+            text-align: center;
+        }
+
+        .color-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+        }
+
+        .color-circle:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .color-swatch p {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .mascot-row, .mascot-row:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+                padding: 32px;
+            }
+            .mascot-image-placeholder {
+                width: 300px;
+                flex: 0 0 300px;
+                height: 300px;
+            }
+            .mascot-traits {
+                justify-content: center;
+            }
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <style>
+            .hero-bg-container {
+                position: absolute;
+                top: 0; left: 0; width: 100%; height: 100%;
+                z-index: 0;
+                overflow: hidden;
+            }
+            .hero-bg-img {
+                width: 100%; height: 100%; object-fit: cover;
+                animation: slowZoom 25s infinite alternate ease-in-out;
+                opacity: 1; /* Full opacity to be visible */
+            }
+            @keyframes slowZoom {
+                0% { transform: scale(1); }
+                100% { transform: scale(1.15); }
+            }
+            .hero-overlay {
+                position: absolute;
+                top: 0; left: 0; width: 100%; height: 100%;
+                /* Escurecimento suave nas cores da marca para dar contraste com o cartão branco */
+                background: rgba(0, 31, 92, 0.4); 
+                backdrop-filter: blur(3px); /* Desfoque bem leve para não esconder a foto */
+            }
+            .light-effect {
+                position: absolute;
+                border-radius: 50%;
+                filter: blur(80px);
+                opacity: 0.5;
+                animation: floatLight 12s infinite alternate ease-in-out;
+                z-index: 1;
+            }
+            .light-1 {
+                top: -10%; left: -10%; width: 50vw; height: 50vw;
+                background: var(--light-blue);
+                animation-delay: 0s;
+            }
+            .light-2 {
+                bottom: -20%; right: -10%; width: 60vw; height: 60vw;
+                background: var(--accent-cyan);
+                animation-delay: -6s;
+            }
+            @keyframes floatLight {
+                0% { transform: translate(0, 0) scale(1); }
+                100% { transform: translate(80px, 60px) scale(1.2); }
+            }
+            .hero-glass-card {
+                position: relative;
+                z-index: 2;
+                background: rgba(255, 255, 255, 0.85); /* Fundo mais branco para o logo destacar perfeito */
+                padding: 60px 40px;
+                border-radius: 32px;
+                box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255,255,255,0.9);
+                width: 100%;
+            }
+
+            /* Lightbox CSS */
+            .lightbox {
+                display: none;
+                position: fixed;
+                z-index: 9999;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.85);
+                align-items: center;
+                justify-content: center;
+                padding: 40px;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            .lightbox.active {
+                opacity: 1;
+            }
+            .lightbox img {
+                max-width: 90%;
+                max-height: 90vh;
+                object-fit: contain;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                transform: scale(0.95);
+                transition: transform 0.3s ease;
+            }
+            .lightbox.active img {
+                transform: scale(1);
+            }
+            .lightbox-close {
+                position: absolute;
+                top: 20px;
+                right: 40px;
+                color: white;
+                font-size: 40px;
+                cursor: pointer;
+                z-index: 10000;
+            }
+        </style>
+        
+        <div class="hero-bg-container">
+            <img src="fachada-dia.jpg" class="hero-bg-img" alt="Background Fachada">
+            <div class="hero-overlay"></div>
+            <div class="light-effect light-1"></div>
+            <div class="light-effect light-2"></div>
+        </div>
+
+        <div class="container hero-content hero-glass-card">
+            <!-- O logotipo original completo deve ser salvo como logo.png nesta mesma pasta -->
+            <img src="logo.png" alt="Logo Escola Transição" class="hero-logo-img" id="main-logo" onload="document.getElementById('hero-text').style.display='none';" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='block';">
+            
+            <div id="fallback-logo" style="display: none;">
+                <div class="hero-logo-icon">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+            </div>
+
+            <div id="hero-text" class="hero-text-container">
+                <h1>ESCOLA <span class="text-gradient animate-transicao">TRANSIÇÃO</span></h1>
+                <h2>Neuroescola Alcione Horny</h2>
+            </div>
+            
+            <p style="margin-top: 32px;">Cada criança, um jeito <strong>único</strong> de aprender.</p>
+        </div>
+
+        <div class="scroll-down">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- DNA / Pillars Section -->
+    <section class="dna-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>DNA da Marca</h2>
+                <p class="text-gray">Nossos pilares fundamentais que guiam a educação e o desenvolvimento.</p>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3>Neurociência</h3>
+                    <p>que transforma</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3>Afeto</h3>
+                    <p>que acolhe</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3>Desenvolvimento</h3>
+                    <p>que prepara para a vida</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>Futuro</h3>
+                    <p>que se constrói hoje</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mascots Section -->
+    <section class="mascots-section">
+        <div class="container">
+            <div class="section-header mascots-header">
+                <h2>Conheça Nossos Mascotes</h2>
+                <p>Eles representam a energia, a curiosidade e o poder do cérebro em desenvolvimento.</p>
+            </div>
+            <div class="mascots-container">
+                
+                <style>
+                    @keyframes floatMascot {
+                        0% { transform: translateY(0px); }
+                        50% { transform: translateY(-15px); }
+                        100% { transform: translateY(0px); }
+                    }
+                </style>
+                <!-- Neurinha -->
+                <div class="mascot-row">
+                    <div class="mascot-image-placeholder" style="padding: 0; background: transparent; border: none; box-shadow: none; overflow: visible;">
+                        <img src="neurinha.png" alt="Mascote Neurinha" style="width: 100%; height: auto; max-height: 450px; object-fit: contain; animation: floatMascot 4s ease-in-out infinite; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none'; this.parentElement.style.background='rgba(255, 255, 255, 0.1)'; this.parentElement.style.boxShadow='0 0 40px rgba(0, 168, 232, 0.2)'; this.nextElementSibling.style.display='inline-block';">
+                        <i class="fa-solid fa-child-reaching"></i>
+                    </div>
+                    <div class="mascot-info">
+                        <div class="mascot-tag">Nossa Mascote</div>
+                        <h3 class="mascot-name">Neurinha</h3>
+                        <p class="mascot-desc">
+                            Neurinha é curiosa, inteligente, carinhosa e adora aprender coisas novas! Ela acredita que cada mente é especial e que <strong>juntas podemos ir mais longe!</strong>
+                        </p>
+                        <div class="mascot-traits">
+                            <span class="trait-badge"><i class="fa-solid fa-magnifying-glass"></i> Curiosa</span>
+                            <span class="trait-badge"><i class="fa-solid fa-lightbulb"></i> Criativa</span>
+                            <span class="trait-badge"><i class="fa-solid fa-book-open"></i> Aprendiz</span>
+                            <span class="trait-badge"><i class="fa-solid fa-heart"></i> Carinhosa</span>
+                            <span class="trait-badge"><i class="fa-solid fa-star"></i> Inspiradora</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Neurinho -->
+                <div class="mascot-row">
+                    <div class="mascot-image-placeholder" style="padding: 0; background: transparent; border: none; box-shadow: none; overflow: visible;">
+                        <img src="neurinho.png" alt="Mascote Neurinho" style="width: 100%; height: auto; max-height: 450px; object-fit: contain; animation: floatMascot 4s ease-in-out infinite; animation-delay: 1s; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none'; this.parentElement.style.background='rgba(255, 255, 255, 0.1)'; this.parentElement.style.boxShadow='0 0 40px rgba(0, 168, 232, 0.2)'; this.nextElementSibling.style.display='inline-block';">
+                        <i class="fa-solid fa-child"></i>
+                    </div>
+                    <div class="mascot-info">
+                        <div class="mascot-tag">Nosso Mascote</div>
+                        <h3 class="mascot-name">Neurinho</h3>
+                        <p class="mascot-desc">
+                            Curioso, inteligente e cheio de ideias! Neurinho adora aprender, fazer perguntas e descobrir coisas novas todos os dias. Ele representa o poder do cérebro em constante desenvolvimento!
+                        </p>
+                        <div class="mascot-traits">
+                            <span class="trait-badge"><i class="fa-solid fa-magnifying-glass"></i> Curioso</span>
+                            <span class="trait-badge"><i class="fa-solid fa-lightbulb"></i> Criativo</span>
+                            <span class="trait-badge"><i class="fa-solid fa-book"></i> Estudioso</span>
+                            <span class="trait-badge"><i class="fa-solid fa-thumbs-up"></i> Amigo</span>
+                            <span class="trait-badge"><i class="fa-solid fa-rocket"></i> Inovador</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Palette Section -->
+    <section class="palette-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Cores da Marca</h2>
+                <p class="text-gray">Nossa paleta transmite confiança, tranquilidade e modernidade.</p>
+            </div>
+            <div class="colors-container">
+                <div class="color-swatch">
+                    <div class="color-circle" style="background-color: #001f5c;"></div>
+                    <p>Azul Profundo</p>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-circle" style="background-color: #003b9e;"></div>
+                    <p>Azul Primário</p>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-circle" style="background-color: #005ce6;"></div>
+                    <p>Azul Vibrante</p>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-circle" style="background-color: #00a8e8;"></div>
+                    <p>Ciano Detalhe</p>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-circle" style="background-color: #e6f0ff;"></div>
+                    <p>Azul Claro</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section class="apps-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Aplicações da Marca</h2>
+                <p class="text-gray">Como nossa identidade ganha vida nos espaços e materiais da escola.</p>
+            </div>
+            <div class="apps-grid">
+                <div class="app-card facade">
+                    <div class="app-image" onclick="openLightbox('fachada-dia.jpg')" title="Clique para ampliar">
+                        <img src="fachada-dia.jpg" alt="Fachada Dia" class="facade-img" onload="this.parentElement.querySelector('i').style.display='none';" onerror="this.style.display='none';">
+                        <img src="fachada-noite.jpg" alt="Fachada Noite" class="facade-img facade-night" onerror="this.style.display='none';">
+                        <i class="fa-solid fa-school"></i>
+                    </div>
+                    <div class="app-content">
+                        <h3>Fachada Externa</h3>
+                        <p>Uma recepção acolhedora e impactante, destacando nossos mascotes, nosso logo e a promessa: "Cada criança, um jeito único de aprender."</p>
+                    </div>
+                </div>
+                <div class="app-card interior">
+                    <div class="app-image" onclick="openLightbox('interno-depois.jpg')" title="Clique para ampliar">
+                        <img src="interno-antes.jpg" alt="Espaço Interno Antes" class="interior-img" onload="this.parentElement.querySelector('i').style.display='none';" onerror="this.style.display='none';">
+                        <img src="interno-depois.jpg" alt="Espaço Interno Depois" class="interior-img interior-after" onerror="this.style.display='none';">
+                        <i class="fa-solid fa-shapes"></i>
+                    </div>
+                    <div class="app-content">
+                        <h3>Espaços Internos</h3>
+                        <p>Salas dinâmicas com piso emborrachado azul, murais educativos e a presença constante da Neurinha e do Neurinho para inspirar os alunos.</p>
+                    </div>
+                </div>
+                <div class="app-card merch">
+                    <div class="app-image" style="background: #fff;" onclick="openLightbox('merchandising.png')" title="Clique para ampliar">
+                        <img src="merchandising.png" alt="Aplicações Diversas" class="interior-img" style="object-fit: contain; padding: 20px;" onload="this.parentElement.querySelector('i').style.display='none';" onerror="this.style.display='none';">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <div class="app-content">
+                        <h3>Uniformes e Merchandising</h3>
+                        <p>A identidade visual aplicada em mochilas, camisetas, garrafas e cadernos, mantendo a coerência e a alegria da marca em todos os pontos de contato.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section" style="padding: 80px 0; background: var(--white);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Redes Sociais</h2>
+                <p class="text-gray">Comunicação digital atrativa, informativa e engajadora, focada nos pilares da neuroescola.</p>
+            </div>
+            <div class="social-mockup" style="text-align: center; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); cursor: zoom-in; max-width: 1000px; margin: 0 auto; transition: transform 0.3s ease;" onclick="openLightbox('redes-sociais.jpg')" title="Clique para ampliar" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <img src="redes-sociais.jpg" alt="Exemplos de Posts Redes Sociais" style="width: 100%; height: auto; display: block;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding: 100px; background: var(--light-blue); color: var(--primary-blue);\'><i class=\'fa-brands fa-instagram\' style=\'font-size: 60px; margin-bottom: 20px;\'></i><br><h3>Design de Redes Sociais</h3></div>';">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <span class="footer-logo">ESCOLA TRANSIÇÃO</span>
+            <p>Neuroescola Alcione Horny &copy; 2026. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="imageLightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightboxImg" src="" alt="Imagem ampliada" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- Scripts for simple interactions -->
+    <script>
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('imageLightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = imgSrc;
+            lightbox.style.display = 'flex';
+            // Force reflow
+            void lightbox.offsetWidth;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('imageLightbox');
+            lightbox.classList.remove('active');
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+            }, 300);
+        }
+        // Add simple scroll reveal animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.pillar-card, .mascot-row, .app-card, .color-swatch');
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
