@@ -866,6 +866,148 @@
         </div>
     </section>
 
+    <!-- Logo Variations Section -->
+    <style>
+        .logos-section {
+            background: var(--bg-light);
+            padding: 100px 0;
+        }
+
+        .logo-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .logo-tab-btn {
+            padding: 10px 28px;
+            border-radius: var(--radius-full);
+            border: 2px solid var(--primary-blue);
+            background: transparent;
+            color: var(--primary-blue);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-tab-btn:hover,
+        .logo-tab-btn.active {
+            background: var(--primary-blue);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(0, 59, 158, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .logo-tab-panel {
+            display: none;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        .logo-tab-panel.active {
+            display: block;
+        }
+
+        .logo-process-intro {
+            max-width: 880px;
+            margin: -24px auto 44px;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.05rem;
+        }
+
+        .logo-grid-main {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            cursor: zoom-in;
+            max-width: 960px;
+            margin: 0 auto 32px;
+            transition: all 0.3s ease;
+        }
+
+        .logo-grid-main:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .logo-grid-main img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .logo-proposal-note {
+            text-align: center;
+            margin-top: 16px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .logo-proposal-note strong {
+            color: var(--primary-blue);
+        }
+
+        @media (max-width: 640px) {
+            .logo-tab-btn {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <section class="logos-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Varia&ccedil;&otilde;es do Logotipo</h2>
+                <p class="text-gray">Estudos visuais criados para encontrar a forma mais forte da marca Escola Transi&ccedil;&atilde;o.</p>
+            </div>
+            <p class="logo-process-intro">
+                Partimos de modelos que exploravam desenvolvimento infantil, neuroci&ecirc;ncia, afeto e aprendizagem. A partir dessas varia&ccedil;&otilde;es, refinamos o s&iacute;mbolo, a composi&ccedil;&atilde;o tipogr&aacute;fica e a paleta azul at&eacute; chegar a um resultado final mais claro, institucional e acolhedor.
+            </p>
+
+            <div class="logo-tabs" role="tablist">
+                <button class="logo-tab-btn active" onclick="switchLogoTab('proposta-a', this)" id="tab-a">Explora&ccedil;&atilde;o 1</button>
+                <button class="logo-tab-btn" onclick="switchLogoTab('proposta-b', this)" id="tab-b">Explora&ccedil;&atilde;o 2</button>
+                <button class="logo-tab-btn" onclick="switchLogoTab('proposta-c', this)" id="tab-c">Explora&ccedil;&atilde;o 3</button>
+                <button class="logo-tab-btn" onclick="switchLogoTab('proposta-d', this)" id="tab-d">Modelo final</button>
+            </div>
+
+            <div class="logo-tab-panel active" id="proposta-a">
+                <div class="logo-grid-main" onclick="openLightbox('logo-variacao-01.png')" title="Clique para ampliar">
+                    <img src="logo-variacao-01.png" alt="Explora&ccedil;&atilde;o de logotipo com fases do desenvolvimento infantil">
+                </div>
+                <p class="logo-proposal-note">Conceito: <strong>jornada de desenvolvimento</strong> com crescimento, movimento e a ideia de cada crian&ccedil;a avan&ccedil;ando no seu pr&oacute;prio ritmo.</p>
+            </div>
+
+            <div class="logo-tab-panel" id="proposta-b">
+                <div class="logo-grid-main" onclick="openLightbox('logo-variacao-02.png')" title="Clique para ampliar">
+                    <img src="logo-variacao-02.png" alt="Explora&ccedil;&atilde;o de logotipo com crian&ccedil;a, c&eacute;rebro e afeto">
+                </div>
+                <p class="logo-proposal-note">Conceito: <strong>neuroci&ecirc;ncia com afeto</strong>, aproximando c&eacute;rebro, cora&ccedil;&atilde;o e acolhimento em uma marca mais humana.</p>
+            </div>
+
+            <div class="logo-tab-panel" id="proposta-c">
+                <div class="logo-grid-main" onclick="openLightbox('logo-variacao-03.png')" title="Clique para ampliar">
+                    <img src="logo-variacao-03.png" alt="Explora&ccedil;&atilde;o de logotipo com composi&ccedil;&otilde;es l&uacute;dicas e educativas">
+                </div>
+                <p class="logo-proposal-note">Conceito: <strong>aprendizagem l&uacute;dica</strong>, testando caminhos mais afetivos, leves e infantis para equilibrar cuidado e educa&ccedil;&atilde;o.</p>
+            </div>
+
+            <div class="logo-tab-panel" id="proposta-d">
+                <div class="logo-grid-main" onclick="openLightbox('logo-variacao-04.png')" title="Clique para ampliar">
+                    <img src="logo-variacao-04.png" alt="Modelo final do logotipo Escola Transi&ccedil;&atilde;o">
+                </div>
+                <p class="logo-proposal-note">Modelo escolhido: <strong>identidade final mais madura e memor&aacute;vel</strong>, unindo o perfil humano, as conex&otilde;es neurais e uma tipografia forte para transmitir confian&ccedil;a, futuro e acolhimento.</p>
+            </div>
+
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <span class="footer-logo">ESCOLA TRANSIÇÃO</span>
@@ -889,6 +1031,15 @@
             // Force reflow
             void lightbox.offsetWidth;
             lightbox.classList.add('active');
+        }
+
+        function switchLogoTab(panelId, btn) {
+            // Deactivate all panels and buttons
+            document.querySelectorAll('.logo-tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.logo-tab-btn').forEach(b => b.classList.remove('active'));
+            // Activate selected
+            document.getElementById(panelId).classList.add('active');
+            btn.classList.add('active');
         }
 
         function closeLightbox() {
