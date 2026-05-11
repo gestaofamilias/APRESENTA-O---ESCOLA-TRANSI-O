@@ -35,12 +35,22 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
         body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        img,
+        video {
+            max-width: 100%;
         }
 
         /* Typography */
@@ -714,6 +724,259 @@
                 font-size: 3rem;
             }
         }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            section {
+                padding: 64px 0;
+            }
+
+            .hero {
+                height: 260vh;
+                min-height: 260vh;
+            }
+
+            .hero-cinema-stage {
+                height: 100svh;
+                min-height: 100svh;
+            }
+
+            .hero-cinema-stage::before,
+            .hero-cinema-stage::after {
+                filter: blur(58px);
+                opacity: 0.45;
+            }
+
+            .hero-cinema-stage::before {
+                width: 86vw;
+                height: 86vw;
+                left: -40vw;
+                top: -24vw;
+            }
+
+            .hero-cinema-stage::after {
+                width: 92vw;
+                height: 92vw;
+                right: -46vw;
+                bottom: -30vw;
+            }
+
+            .hero-depth-bg {
+                filter: blur(12px) saturate(1.08);
+                opacity: 0.26;
+            }
+
+            .hero-noise {
+                opacity: 0.18;
+                background-size: 96px 96px, 132px 132px;
+            }
+
+            .hero-video-shell {
+                width: min(92vw, 560px);
+                border-radius: 18px;
+                box-shadow:
+                    0 28px 70px rgba(0, 31, 92, 0.22),
+                    0 12px 28px rgba(0, 168, 232, 0.14);
+            }
+
+            .hero-scroll-cue {
+                bottom: max(18px, env(safe-area-inset-bottom));
+                gap: 8px;
+                font-size: 0.62rem;
+                letter-spacing: 1.3px;
+            }
+
+            .section-header {
+                margin-bottom: 36px;
+            }
+
+            .section-header h2 {
+                font-size: clamp(1.8rem, 8vw, 2.25rem);
+            }
+
+            .section-header p,
+            .logo-process-intro {
+                font-size: 0.98rem;
+                line-height: 1.55;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .pillar-card {
+                padding: 28px 20px;
+                border-radius: 18px;
+            }
+
+            .pillar-icon {
+                width: 68px;
+                height: 68px;
+                font-size: 28px;
+                margin-bottom: 18px;
+            }
+
+            .mascots-container {
+                gap: 36px;
+            }
+
+            .mascot-row,
+            .mascot-row:nth-child(even) {
+                gap: 22px;
+                padding: 24px 18px;
+                border-radius: 20px;
+            }
+
+            .mascot-image-placeholder {
+                width: min(76vw, 280px);
+                height: auto;
+                min-height: 0;
+                flex: 0 0 auto;
+            }
+
+            .mascot-image-placeholder img {
+                max-height: 300px !important;
+            }
+
+            .mascot-name {
+                font-size: clamp(2.1rem, 13vw, 2.7rem);
+            }
+
+            .mascot-desc {
+                font-size: 1rem;
+                line-height: 1.65;
+                margin-bottom: 22px;
+            }
+
+            .mascot-traits {
+                gap: 8px;
+            }
+
+            .trait-badge {
+                padding: 7px 12px;
+                font-size: 0.82rem;
+            }
+
+            .colors-container {
+                gap: 16px;
+            }
+
+            .color-swatch {
+                width: 92px;
+            }
+
+            .color-circle {
+                width: 86px;
+                height: 86px;
+                margin: 0 auto 12px;
+            }
+
+            .apps-grid {
+                gap: 20px;
+            }
+
+            .app-card {
+                border-radius: 18px;
+            }
+
+            .app-image {
+                height: clamp(210px, 58vw, 300px);
+            }
+
+            .app-content {
+                padding: 22px;
+            }
+
+            .app-content h3 {
+                font-size: 1.25rem;
+            }
+
+            .social-section {
+                padding: 64px 0 !important;
+            }
+
+            .social-mockup,
+            .logo-grid-main {
+                border-radius: 16px !important;
+                box-shadow: var(--shadow-md) !important;
+            }
+
+            .logos-section {
+                padding: 64px 0;
+            }
+
+            .logo-process-intro {
+                margin: -16px auto 30px;
+            }
+
+            .logo-tabs {
+                gap: 8px;
+                margin-bottom: 28px;
+            }
+
+            .logo-tab-btn {
+                width: 100%;
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+
+            .logo-proposal-note {
+                font-size: 0.9rem;
+                line-height: 1.55;
+                padding: 0 4px;
+            }
+
+            .lightbox {
+                padding: 16px;
+            }
+
+            .lightbox img {
+                max-width: 96%;
+                max-height: 84svh;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 18px;
+                font-size: 34px;
+            }
+
+            footer {
+                padding: 32px 16px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                padding: 0 14px;
+            }
+
+            section {
+                padding: 56px 0;
+            }
+
+            .hero-video-shell {
+                width: 94vw;
+                border-radius: 14px;
+            }
+
+            .section-header h2 {
+                font-size: 1.72rem;
+            }
+
+            .pillar-card,
+            .mascot-row {
+                border-radius: 16px;
+            }
+
+            .app-image {
+                height: 205px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1262,15 +1525,15 @@
             cinematic
                 .fromTo(videoShell,
                     {
-                        width: () => window.innerWidth < 768 ? '88vw' : '58vw',
-                        height: () => window.innerWidth < 768 ? '49.5vw' : '32.625vw',
-                        borderRadius: () => window.innerWidth < 768 ? '24px' : '34px',
+                        width: () => window.innerWidth < 768 ? '92vw' : '58vw',
+                        height: () => window.innerWidth < 768 ? '51.75vw' : '32.625vw',
+                        borderRadius: () => window.innerWidth < 768 ? '18px' : '34px',
                         y: () => window.innerWidth < 768 ? 34 : 22,
                         boxShadow: '0 46px 120px rgba(0, 31, 92, 0.24), 0 18px 42px rgba(0, 168, 232, 0.16)'
                     },
                     {
                         width: '100vw',
-                        height: '100vh',
+                        height: () => window.innerWidth < 768 ? '100svh' : '100vh',
                         borderRadius: '0px',
                         y: 0,
                         boxShadow: '0 0 0 rgba(0, 31, 92, 0)',
