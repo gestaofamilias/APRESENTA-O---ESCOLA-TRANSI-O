@@ -540,7 +540,7 @@
         }
 
         .neurinha-showcase {
-            min-height: clamp(620px, 72vw, 760px);
+            min-height: 470px;
             padding: 0;
             overflow: hidden;
             position: relative;
@@ -570,23 +570,64 @@
             opacity: 0;
             transform: translateX(28px) scale(1.03);
             animation: neurinhaPinkMode 12s ease-in-out infinite;
-            cursor: zoom-in;
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            padding: 48px;
+            background:
+                radial-gradient(circle at 18% 42%, rgba(255, 255, 255, 0.75), transparent 25%),
+                radial-gradient(circle at 82% 28%, rgba(255, 79, 178, 0.24), transparent 32%),
+                linear-gradient(135deg, #ffeef8 0%, #f835a6 100%);
+        }
+
+        .pink-mascot-photo {
+            flex: 0 0 360px;
+            height: 380px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 24px;
-            background: linear-gradient(135deg, #fff7fc 0%, #ffe4f4 100%);
+            animation: neurinhaPinkDrift 12s ease-in-out infinite;
+            filter: drop-shadow(0 22px 28px rgba(110, 14, 83, 0.22));
+            cursor: zoom-in;
         }
 
-        .neurinha-slide-pink img {
-            width: auto;
+        .pink-mascot-photo img {
+            width: 100%;
             height: 100%;
-            max-width: 100%;
             display: block;
             object-fit: contain;
             object-position: center;
-            animation: neurinhaPinkDrift 12s ease-in-out infinite;
-            filter: drop-shadow(0 18px 32px rgba(123, 22, 93, 0.18));
+        }
+
+        .pink-mascot-info {
+            color: #ffffff;
+        }
+
+        .pink-mascot-info .mascot-tag {
+            background: #e7138f;
+            color: #ffffff;
+            box-shadow: 0 12px 24px rgba(169, 0, 105, 0.18);
+        }
+
+        .pink-mascot-info .mascot-name {
+            color: #ffffff;
+            text-shadow: 0 4px 14px rgba(123, 0, 79, 0.22);
+        }
+
+        .pink-mascot-info .mascot-desc {
+            color: rgba(255, 255, 255, 0.94);
+            opacity: 1;
+        }
+
+        .pink-mascot-info .trait-badge {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.34);
+            color: #ffffff;
+            box-shadow: 0 10px 24px rgba(123, 0, 79, 0.12);
+        }
+
+        .pink-mascot-info .trait-badge i {
+            color: #ffe1f4;
         }
 
         .neurinha-mode-indicator {
@@ -971,8 +1012,20 @@
                 text-align: center;
             }
 
-            .neurinha-slide-pink img {
-                object-position: center top;
+            .neurinha-slide-pink {
+                flex-direction: column;
+                justify-content: center;
+                gap: 18px;
+                padding: 26px 18px 58px;
+                text-align: center;
+            }
+
+            .pink-mascot-photo {
+                flex: 1 1 auto;
+                width: 100%;
+                max-width: 320px;
+                height: 320px;
+                margin: 0 auto;
             }
 
             .neurinha-mode-indicator {
@@ -1129,6 +1182,15 @@
 
             .neurinha-slide-blue {
                 padding: 24px 16px 52px;
+            }
+
+            .neurinha-slide-pink {
+                padding: 22px 16px 56px;
+            }
+
+            .pink-mascot-photo {
+                height: 260px;
+                max-width: 260px;
             }
 
             .app-image {
@@ -1380,8 +1442,24 @@
                         </div>
                     </div>
                     </div>
-                    <div class="neurinha-slide neurinha-slide-pink" onclick="openLightbox('neurinha-rosa.png')" title="Clique para ampliar">
-                        <img src="neurinha-rosa.png" alt="Modo rosa da mascote Neurinha">
+                    <div class="neurinha-slide neurinha-slide-pink">
+                        <div class="pink-mascot-photo" onclick="openLightbox('neurinha-rosa-nova.png')" title="Clique para ampliar">
+                            <img src="neurinha-rosa-nova.png" alt="Neurinha rosa">
+                        </div>
+                        <div class="mascot-info pink-mascot-info">
+                            <div class="mascot-tag">Nossa Mascote</div>
+                            <h3 class="mascot-name">Neurinha Rosa</h3>
+                            <p class="mascot-desc">
+                                Sonhadora, emp&aacute;tica e criativa, acredita que o aprendizado transforma o mundo com afeto, imagina&ccedil;&atilde;o e coragem.
+                            </p>
+                            <div class="mascot-traits">
+                                <span class="trait-badge"><i class="fa-solid fa-heart"></i> Emp&aacute;tica</span>
+                                <span class="trait-badge"><i class="fa-solid fa-lightbulb"></i> Criativa</span>
+                                <span class="trait-badge"><i class="fa-solid fa-star"></i> Determinada</span>
+                                <span class="trait-badge"><i class="fa-solid fa-seedling"></i> Inspiradora</span>
+                                <span class="trait-badge"><i class="fa-solid fa-magnifying-glass"></i> Curiosa</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="neurinha-mode-indicator" aria-hidden="true">
                         <span></span>
@@ -1591,9 +1669,55 @@
             color: var(--primary-blue);
         }
 
+        .name-variations-section {
+            background: var(--bg-light);
+            padding: 0 0 100px;
+        }
+
+        .name-variations-intro {
+            max-width: 860px;
+            margin: -20px auto 40px;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.05rem;
+        }
+
+        .name-variations-stack {
+            display: grid;
+            gap: 36px;
+        }
+
+        .name-variation-frame {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            cursor: zoom-in;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .name-variation-frame:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 28px 55px rgba(0, 31, 92, 0.16);
+        }
+
+        .name-variation-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         @media (max-width: 640px) {
             .logo-tab-btn {
                 width: 100%;
+            }
+
+            .name-variations-section {
+                padding-bottom: 72px;
+            }
+
+            .name-variations-stack {
+                gap: 24px;
             }
         }
     </style>
@@ -1643,6 +1767,27 @@
                 <p class="logo-proposal-note">Modelo escolhido: <strong>identidade final mais madura e memor&aacute;vel</strong>, unindo o perfil humano, as conex&otilde;es neurais e uma tipografia forte para transmitir confian&ccedil;a, futuro e acolhimento.</p>
             </div>
 
+        </div>
+    </section>
+
+    <!-- Name Variations Section -->
+    <section class="name-variations-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Varia&ccedil;&otilde;es dos Nomes</h2>
+                <p class="text-gray">Op&ccedil;&otilde;es de nomes para os mascotes, organizadas para compara&ccedil;&atilde;o e escolha do cliente.</p>
+            </div>
+            <p class="name-variations-intro">
+                As pranchas abaixo apresentam caminhos masculinos e femininos com estilos diferentes, mantendo a leitura grande para facilitar a avalia&ccedil;&atilde;o.
+            </p>
+            <div class="name-variations-stack">
+                <div class="name-variation-frame" onclick="openLightbox('variacoes-nomes-01.png')" title="Clique para ampliar">
+                    <img src="variacoes-nomes-01.png" alt="Varia&ccedil;&otilde;es de nomes Theo e Luna para os mascotes">
+                </div>
+                <div class="name-variation-frame" onclick="openLightbox('variacoes-nomes-02.png')" title="Clique para ampliar">
+                    <img src="variacoes-nomes-02.png" alt="Varia&ccedil;&otilde;es de nomes Neurinho e Neurinha para os mascotes">
+                </div>
+            </div>
         </div>
     </section>
 
