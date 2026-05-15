@@ -3,1918 +3,579 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apresentação da Marca - Escola Transição</title>
+    <title>Apresentação - Identidade Visual | Escola Transição</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration based on Brand Palette -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-deep-blue': '#003B8E',
+                        'brand-light-blue': '#0FA3E6',
+                        'brand-turquoise': '#29C0B1',
+                        'brand-yellow': '#FFC72C',
+                        'brand-sky-blue': '#E6F3FF',
+                        'brand-white': '#FFFFFF',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for Animations and Specific Styling -->
     <style>
-        :root {
-            --primary-dark: #001f5c;
-            --primary-blue: #003b9e;
-            --secondary-blue: #005ce6;
-            --light-blue: #e6f0ff;
-            --accent-cyan: #00a8e8;
-            --bg-light: #f4f7fa;
-            --white: #ffffff;
-            --text-dark: #1a202c;
-            --text-gray: #4a5568;
-            --radius-md: 12px;
-            --radius-lg: 24px;
-            --radius-full: 9999px;
-            --shadow-sm: 0 2px 4px rgba(0, 31, 92, 0.05);
-            --shadow-md: 0 10px 20px rgba(0, 31, 92, 0.08);
-            --shadow-lg: 0 20px 40px rgba(0, 31, 92, 0.12);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-        }
-
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            background-color: #FAFAFA;
+            color: #333;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        img,
-        video {
-            max-width: 100%;
+        .section-padding {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
         }
 
-        /* Typography */
-        h1, h2, h3, h4 {
-            line-height: 1.2;
-            font-weight: 700;
+        /* Fade In Animation classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
         }
 
-        .text-gradient {
-            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
+        /* Logo Animation in Hero */
+        .hero-logo-container {
+            animation: float 6s ease-in-out infinite;
         }
 
-        /* Sections */
-        section {
-            padding: 100px 0;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            z-index: 1;
-            max-width: 1000px;
-            animation: fadeInUp 1s ease-out;
-            padding: 40px;
-        }
-
-        .hero-logo-img {
-            max-width: 900px;
-            width: 100%;
-            height: auto;
-            margin: 0 auto 16px;
-            display: block;
-            filter: drop-shadow(0 10px 20px rgba(0, 31, 92, 0.1));
-        }
-
-        .hero-logo-icon {
-            font-size: 80px;
-            color: var(--primary-blue);
-            margin-bottom: 24px;
-            display: inline-block;
-            background: white;
-            width: 160px;
-            height: 160px;
-            line-height: 160px;
-            border-radius: 50%;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-            color: var(--primary-dark);
-        }
-        
-        .hero h2 {
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            font-weight: 500;
-            margin-bottom: 32px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .hero p {
-            font-size: 1.8rem;
-            color: var(--text-gray);
-            font-weight: 300;
-            font-style: italic;
-        }
-
-        .hero p strong {
-            font-weight: 600;
-            color: var(--secondary-blue);
-        }
-
-        .scroll-down {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            color: var(--primary-blue);
-            font-size: 24px;
-            animation: bounce 2s infinite;
-            opacity: 0.7;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-15px) translateX(-50%); }
-            60% { transform: translateY(-7px) translateX(-50%); }
-        }
-
-        .animate-transicao {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-blue), var(--accent-cyan), var(--primary-dark));
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 4s ease infinite, floatText 3s ease-in-out infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes floatText {
+        @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
 
-        /* Cinematic Hero */
-        .hero {
-            height: 300vh;
-            min-height: 300vh;
-            padding: 0;
-            display: block;
-            position: relative;
-            overflow: visible;
-            background:
-                radial-gradient(circle at 16% 18%, rgba(0, 168, 232, 0.26), transparent 32%),
-                radial-gradient(circle at 84% 14%, rgba(0, 92, 230, 0.22), transparent 34%),
-                linear-gradient(145deg, #f9fcff 0%, #eaf4ff 42%, #ffffff 100%);
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #E6F3FF; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0FA3E6; 
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #003B8E; 
         }
 
-        .hero-cinema-stage {
-            height: 100vh;
-            min-height: 620px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            isolation: isolate;
-        }
-
-        .hero > .hero-bg-container,
-        .hero > .hero-glass-card,
-        .hero > .scroll-down {
-            display: none !important;
-        }
-
-        .hero-cinema-stage::before,
-        .hero-cinema-stage::after {
-            content: '';
-            position: absolute;
-            inset: auto;
-            border-radius: 50%;
-            filter: blur(84px);
-            opacity: 0.65;
-            pointer-events: none;
-            transform: translateZ(0);
-        }
-
-        .hero-cinema-stage::before {
-            width: 44vw;
-            height: 44vw;
-            left: -12vw;
-            top: -14vw;
-            background: rgba(0, 168, 232, 0.34);
-            animation: cinematicGlowA 9s ease-in-out infinite alternate;
-        }
-
-        .hero-cinema-stage::after {
-            width: 48vw;
-            height: 48vw;
-            right: -16vw;
-            bottom: -18vw;
-            background: rgba(0, 59, 158, 0.3);
-            animation: cinematicGlowB 10s ease-in-out infinite alternate;
-        }
-
-        .hero-noise {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            background-image:
-                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.8) 0 1px, transparent 1.5px),
-                radial-gradient(circle at 72% 66%, rgba(0,168,232,0.25) 0 1px, transparent 1.8px);
-            background-size: 120px 120px, 170px 170px;
-            opacity: 0.34;
-            animation: particleDrift 18s linear infinite;
-        }
-
-        .hero-depth-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            background:
-                linear-gradient(90deg, rgba(255,255,255,0.72), rgba(255,255,255,0.2)),
-                url('fachada-dia.jpg') center/cover;
-            filter: blur(18px) saturate(1.18);
-            transform: scale(1.08);
-            opacity: 0.38;
-        }
-
-        .hero-video-shell {
-            position: relative;
-            z-index: 3;
-            width: min(68vw, 980px);
-            aspect-ratio: 16 / 9;
-            border-radius: 34px;
-            overflow: hidden;
-            background: rgba(255,255,255,0.22);
-            border: 1px solid rgba(255,255,255,0.72);
-            box-shadow:
-                0 46px 120px rgba(0, 31, 92, 0.24),
-                0 18px 42px rgba(0, 168, 232, 0.16),
-                inset 0 1px 0 rgba(255,255,255,0.7);
-            backdrop-filter: blur(22px);
-            transform-origin: center center;
-            will-change: width, height, border-radius, box-shadow, transform;
-        }
-
-        .hero-video-shell::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            z-index: 2;
-            pointer-events: none;
-            background:
-                linear-gradient(135deg, rgba(255,255,255,0.46), transparent 28%),
-                radial-gradient(circle at 50% 0%, rgba(0,168,232,0.22), transparent 48%);
-            mix-blend-mode: screen;
-        }
-
-        .hero-logo-video {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-            object-position: center;
-            background: var(--white);
-            transform: scale(1.01);
-            will-change: transform, filter;
-        }
-
-        .hero-scroll-cue {
-            position: absolute;
-            left: 50%;
-            bottom: clamp(28px, 5vh, 54px);
-            z-index: 4;
-            transform: translateX(-50%);
-            color: var(--primary-blue);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            opacity: 0.72;
-        }
-
-        .hero-scroll-cue i {
-            font-size: 20px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes cinematicGlowA {
-            from { transform: translate3d(0, 0, 0) scale(1); }
-            to { transform: translate3d(8vw, 6vh, 0) scale(1.16); }
-        }
-
-        @keyframes cinematicGlowB {
-            from { transform: translate3d(0, 0, 0) scale(1); }
-            to { transform: translate3d(-8vw, -5vh, 0) scale(1.12); }
-        }
-
-        @keyframes particleDrift {
-            from { background-position: 0 0, 0 0; }
-            to { background-position: 120px 120px, -170px 170px; }
-        }
-
-        @media (max-width: 768px) {
-            .hero-cinema-stage {
-                min-height: 100vh;
-            }
-            .hero-video-shell {
-                width: min(88vw, 520px);
-                border-radius: 24px;
-            }
-        }
-
-        /* Brand DNA Section */
-        .dna-section {
-            background: var(--white);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 16px;
-        }
-
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 32px;
-        }
-
-        .pillar-card {
-            background: var(--bg-light);
-            padding: 40px 32px;
-            border-radius: var(--radius-lg);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pillar-card::after {
-            content: '';
+        /* Shape divider */
+        .custom-shape-divider-bottom-1715715504 {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-dark), var(--secondary-blue));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-            transform-origin: left;
-        }
-
-        .pillar-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-md);
-            background: var(--white);
-        }
-
-        .pillar-card:hover::after {
-            transform: scaleX(1);
-        }
-
-        .pillar-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--light-blue);
-            color: var(--primary-blue);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            margin: 0 auto 24px;
-            transition: all 0.3s ease;
-        }
-
-        .pillar-card:hover .pillar-icon {
-            background: var(--primary-blue);
-            color: var(--white);
-            transform: scale(1.1);
-        }
-
-        .pillar-card h3 {
-            font-size: 1.25rem;
-            color: var(--primary-dark);
-            margin-bottom: 12px;
-        }
-
-        .pillar-card p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-        }
-
-        /* Mascots Section */
-        .mascots-section {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
-            color: var(--white);
-            position: relative;
-        }
-
-        .mascots-header h2 {
-            color: var(--white);
-        }
-
-        .mascots-container {
-            display: flex;
-            flex-direction: column;
-            gap: 64px;
-        }
-
-        .mascot-row {
-            display: flex;
-            align-items: center;
-            gap: 48px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--radius-lg);
-            padding: 48px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .mascot-row:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .mascot-image-placeholder {
-            flex: 0 0 400px;
-            height: 400px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-full);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 120px;
-            color: rgba(255, 255, 255, 0.5);
-            position: relative;
-            box-shadow: 0 0 40px rgba(0, 168, 232, 0.2);
-        }
-
-        .mascot-info {
-            flex: 1;
-        }
-
-        .mascot-name {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: var(--white);
-            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .mascot-tag {
-            display: inline-block;
-            background: var(--secondary-blue);
-            padding: 6px 16px;
-            border-radius: var(--radius-full);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            letter-spacing: 1px;
-        }
-
-        .mascot-desc {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            opacity: 0.9;
-            margin-bottom: 32px;
-        }
-
-        .mascot-traits {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .trait-badge {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 8px 20px;
-            border-radius: var(--radius-full);
-            font-size: 0.95rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .neurinha-showcase {
-            min-height: 470px;
-            padding: 0;
             overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .custom-shape-divider-bottom-1715715504 svg {
             position: relative;
             display: block;
-            background: linear-gradient(135deg, #123b86 0%, #0b2f73 100%);
+            width: calc(100% + 1.3px);
+            height: 70px;
         }
 
-        .neurinha-slide {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            min-height: 100%;
-        }
-
-        .neurinha-slide-blue {
-            display: flex;
-            align-items: center;
-            gap: 48px;
-            padding: 48px;
-            background:
-                radial-gradient(circle at 78% 38%, rgba(0, 168, 232, 0.28), transparent 30%),
-                linear-gradient(135deg, #123b86 0%, #0b2f73 100%);
-            animation: neurinhaBlueMode 12s ease-in-out infinite;
-        }
-
-        .neurinha-slide-pink {
-            opacity: 0;
-            transform: translateX(28px) scale(1.03);
-            animation: neurinhaPinkMode 12s ease-in-out infinite;
-            display: flex;
-            align-items: center;
-            gap: 48px;
-            padding: 48px;
-            background:
-                radial-gradient(circle at 18% 42%, rgba(255, 255, 255, 0.75), transparent 25%),
-                radial-gradient(circle at 82% 28%, rgba(255, 79, 178, 0.24), transparent 32%),
-                linear-gradient(135deg, #ffeef8 0%, #f835a6 100%);
-        }
-
-        .pink-mascot-photo {
-            flex: 0 0 360px;
-            height: 380px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: neurinhaPinkDrift 12s ease-in-out infinite;
-            filter: drop-shadow(0 22px 28px rgba(110, 14, 83, 0.22));
-            cursor: zoom-in;
-        }
-
-        .pink-mascot-photo img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: contain;
-            object-position: center;
-        }
-
-        .pink-mascot-info {
-            color: #ffffff;
-        }
-
-        .pink-mascot-info .mascot-tag {
-            background: #e7138f;
-            color: #ffffff;
-            box-shadow: 0 12px 24px rgba(169, 0, 105, 0.18);
-        }
-
-        .pink-mascot-info .mascot-name {
-            color: #ffffff;
-            text-shadow: 0 4px 14px rgba(123, 0, 79, 0.22);
-        }
-
-        .pink-mascot-info .mascot-desc {
-            color: rgba(255, 255, 255, 0.94);
-            opacity: 1;
-        }
-
-        .pink-mascot-info .trait-badge {
-            background: rgba(255, 255, 255, 0.18);
-            border-color: rgba(255, 255, 255, 0.34);
-            color: #ffffff;
-            box-shadow: 0 10px 24px rgba(123, 0, 79, 0.12);
-        }
-
-        .pink-mascot-info .trait-badge i {
-            color: #ffe1f4;
-        }
-
-        .neurinha-mode-indicator {
-            position: absolute;
-            right: 24px;
-            bottom: 20px;
-            z-index: 4;
-            display: flex;
-            gap: 8px;
-            pointer-events: none;
-        }
-
-        .neurinha-mode-indicator span {
-            width: 28px;
-            height: 5px;
-            border-radius: var(--radius-full);
-            background: rgba(255,255,255,0.38);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.14);
-        }
-
-        .neurinha-mode-indicator span:first-child {
-            animation: neurinhaDotBlue 12s ease-in-out infinite;
-        }
-
-        .neurinha-mode-indicator span:last-child {
-            animation: neurinhaDotPink 12s ease-in-out infinite;
-        }
-
-        @keyframes neurinhaBlueMode {
-            0%, 42% {
-                opacity: 1;
-                transform: translateX(0) scale(1);
-                filter: blur(0);
-            }
-            50%, 92% {
-                opacity: 0;
-                transform: translateX(-28px) scale(0.985);
-                filter: blur(8px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0) scale(1);
-                filter: blur(0);
-            }
-        }
-
-        @keyframes neurinhaPinkMode {
-            0%, 42% {
-                opacity: 0;
-                transform: translateX(28px) scale(1.03);
-                filter: blur(8px);
-            }
-            50%, 92% {
-                opacity: 1;
-                transform: translateX(0) scale(1);
-                filter: blur(0);
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(28px) scale(1.03);
-                filter: blur(8px);
-            }
-        }
-
-        @keyframes neurinhaPinkDrift {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-
-        @keyframes neurinhaDotBlue {
-            0%, 42%, 100% { background: #ffffff; width: 42px; }
-            50%, 92% { background: rgba(255,255,255,0.38); width: 28px; }
-        }
-
-        @keyframes neurinhaDotPink {
-            0%, 42%, 100% { background: rgba(255,255,255,0.38); width: 28px; }
-            50%, 92% { background: #ff4eb2; width: 42px; }
-        }
-
-        /* Applications Section */
-        .apps-section {
-            background: var(--bg-light);
-        }
-
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-        }
-
-        .app-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s ease;
-        }
-
-        .app-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-5px);
-        }
-
-        .app-image {
-            height: 300px;
-            background: var(--light-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-blue);
-            font-size: 48px;
-            position: relative;
-            overflow: hidden;
-            cursor: zoom-in;
-        }
-
-        .facade-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .facade-night {
-            opacity: 0;
-            animation: dayToNight 6s infinite alternate ease-in-out;
-        }
-        
-        @keyframes dayToNight {
-            0%, 25% { opacity: 0; }
-            75%, 100% { opacity: 1; }
-        }
-
-        .interior-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .interior-after {
-            opacity: 0;
-            animation: beforeToAfter 6s infinite alternate ease-in-out;
-            animation-delay: 3s; /* Delay so it doesn't fade exactly at the same time as the facade */
-        }
-        
-        @keyframes beforeToAfter {
-            0%, 25% { opacity: 0; }
-            75%, 100% { opacity: 1; }
-        }
-
-        .app-card.facade .app-image {
-            background: linear-gradient(to bottom, #87CEEB, #e0f2fe);
-        }
-
-        .app-card.interior .app-image {
-            background: linear-gradient(135deg, #f0f9ff, #bae6fd);
-        }
-
-        .app-content {
-            padding: 32px;
-        }
-
-        .app-content h3 {
-            font-size: 1.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 12px;
-        }
-
-        .app-content p {
-            color: var(--text-gray);
-        }
-
-        /* Color Palette */
-        .palette-section {
-            background: var(--white);
-        }
-
-        .colors-container {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        .color-swatch {
-            width: 120px;
-            text-align: center;
-        }
-
-        .color-circle {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.3s ease;
-        }
-
-        .color-circle:hover {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-md);
-        }
-
-        .color-swatch p {
-            font-weight: 600;
-            color: var(--text-dark);
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-dark);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .footer-logo {
-            color: var(--white);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .mascot-row, .mascot-row:nth-child(even) {
-                flex-direction: column;
-                text-align: center;
-                padding: 32px;
-            }
-            .mascot-image-placeholder {
-                width: 300px;
-                flex: 0 0 300px;
-                height: 300px;
-            }
-            .mascot-traits {
-                justify-content: center;
-            }
-            .apps-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero h1 {
-                font-size: 3rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
-            }
-
-            section {
-                padding: 64px 0;
-            }
-
-            .hero {
-                height: 260vh;
-                min-height: 260vh;
-            }
-
-            .hero-cinema-stage {
-                height: 100svh;
-                min-height: 100svh;
-            }
-
-            .hero-cinema-stage::before,
-            .hero-cinema-stage::after {
-                filter: blur(58px);
-                opacity: 0.45;
-            }
-
-            .hero-cinema-stage::before {
-                width: 86vw;
-                height: 86vw;
-                left: -40vw;
-                top: -24vw;
-            }
-
-            .hero-cinema-stage::after {
-                width: 92vw;
-                height: 92vw;
-                right: -46vw;
-                bottom: -30vw;
-            }
-
-            .hero-depth-bg {
-                filter: blur(12px) saturate(1.08);
-                opacity: 0.26;
-            }
-
-            .hero-noise {
-                opacity: 0.18;
-                background-size: 96px 96px, 132px 132px;
-            }
-
-            .hero-video-shell {
-                width: min(92vw, 560px);
-                border-radius: 18px;
-                box-shadow:
-                    0 28px 70px rgba(0, 31, 92, 0.22),
-                    0 12px 28px rgba(0, 168, 232, 0.14);
-            }
-
-            .hero-scroll-cue {
-                bottom: max(18px, env(safe-area-inset-bottom));
-                gap: 8px;
-                font-size: 0.62rem;
-                letter-spacing: 1.3px;
-            }
-
-            .section-header {
-                margin-bottom: 36px;
-            }
-
-            .section-header h2 {
-                font-size: clamp(1.8rem, 8vw, 2.25rem);
-            }
-
-            .section-header p,
-            .logo-process-intro {
-                font-size: 0.98rem;
-                line-height: 1.55;
-            }
-
-            .pillars-grid {
-                grid-template-columns: 1fr;
-                gap: 18px;
-            }
-
-            .pillar-card {
-                padding: 28px 20px;
-                border-radius: 18px;
-            }
-
-            .pillar-icon {
-                width: 68px;
-                height: 68px;
-                font-size: 28px;
-                margin-bottom: 18px;
-            }
-
-            .mascots-container {
-                gap: 36px;
-            }
-
-            .mascot-row,
-            .mascot-row:nth-child(even) {
-                gap: 22px;
-                padding: 24px 18px;
-                border-radius: 20px;
-            }
-
-            .neurinha-showcase {
-                min-height: 620px;
-                padding: 0 !important;
-            }
-
-            .neurinha-slide-blue {
-                flex-direction: column;
-                justify-content: center;
-                gap: 20px;
-                padding: 28px 18px 54px;
-                text-align: center;
-            }
-
-            .neurinha-slide-pink {
-                flex-direction: column;
-                justify-content: center;
-                gap: 18px;
-                padding: 26px 18px 58px;
-                text-align: center;
-            }
-
-            .pink-mascot-photo {
-                flex: 1 1 auto;
-                width: 100%;
-                max-width: 320px;
-                height: 320px;
-                margin: 0 auto;
-            }
-
-            .neurinha-mode-indicator {
-                right: 50%;
-                bottom: 18px;
-                transform: translateX(50%);
-            }
-
-            .mascot-image-placeholder {
-                width: min(76vw, 280px);
-                height: auto;
-                min-height: 0;
-                flex: 0 0 auto;
-            }
-
-            .mascot-image-placeholder img {
-                max-height: 300px !important;
-            }
-
-            .mascot-name {
-                font-size: clamp(2.1rem, 13vw, 2.7rem);
-            }
-
-            .mascot-desc {
-                font-size: 1rem;
-                line-height: 1.65;
-                margin-bottom: 22px;
-            }
-
-            .mascot-traits {
-                gap: 8px;
-            }
-
-            .trait-badge {
-                padding: 7px 12px;
-                font-size: 0.82rem;
-            }
-
-            .colors-container {
-                gap: 16px;
-            }
-
-            .color-swatch {
-                width: 92px;
-            }
-
-            .color-circle {
-                width: 86px;
-                height: 86px;
-                margin: 0 auto 12px;
-            }
-
-            .apps-grid {
-                gap: 20px;
-            }
-
-            .app-card {
-                border-radius: 18px;
-            }
-
-            .app-image {
-                height: clamp(210px, 58vw, 300px);
-            }
-
-            .app-content {
-                padding: 22px;
-            }
-
-            .app-content h3 {
-                font-size: 1.25rem;
-            }
-
-            .social-section {
-                padding: 64px 0 !important;
-            }
-
-            .social-mockup,
-            .logo-grid-main {
-                border-radius: 16px !important;
-                box-shadow: var(--shadow-md) !important;
-            }
-
-            .logos-section {
-                padding: 64px 0;
-            }
-
-            .logo-process-intro {
-                margin: -16px auto 30px;
-            }
-
-            .logo-tabs {
-                gap: 8px;
-                margin-bottom: 28px;
-            }
-
-            .logo-tab-btn {
-                width: 100%;
-                padding: 12px 16px;
-                font-size: 0.9rem;
-            }
-
-            .logo-proposal-note {
-                font-size: 0.9rem;
-                line-height: 1.55;
-                padding: 0 4px;
-            }
-
-            .lightbox {
-                padding: 16px;
-            }
-
-            .lightbox img {
-                max-width: 96%;
-                max-height: 84svh;
-            }
-
-            .lightbox-close {
-                top: 10px;
-                right: 18px;
-                font-size: 34px;
-            }
-
-            footer {
-                padding: 32px 16px;
-            }
-        }
-
-        @media (max-width: 420px) {
-            .container {
-                padding: 0 14px;
-            }
-
-            section {
-                padding: 56px 0;
-            }
-
-            .hero-video-shell {
-                width: 94vw;
-                border-radius: 14px;
-            }
-
-            .section-header h2 {
-                font-size: 1.72rem;
-            }
-
-            .pillar-card,
-            .mascot-row {
-                border-radius: 16px;
-            }
-
-            .neurinha-showcase {
-                min-height: 590px;
-            }
-
-            .neurinha-slide-blue {
-                padding: 24px 16px 52px;
-            }
-
-            .neurinha-slide-pink {
-                padding: 22px 16px 56px;
-            }
-
-            .pink-mascot-photo {
-                height: 260px;
-                max-width: 260px;
-            }
-
-            .app-image {
-                height: 205px;
-            }
+        .custom-shape-divider-bottom-1715715504 .shape-fill {
+            fill: #FAFAFA;
         }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-brand-yellow selection:text-brand-deep-blue">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <!-- Text Logo for Nav -->
+                    <span class="font-bold text-xl tracking-tight text-brand-deep-blue transition-colors duration-300" id="nav-logo">
+                        Escola <span class="text-brand-light-blue">Transição</span>
+                    </span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#conceito" class="text-sm font-semibold text-gray-700 hover:text-brand-light-blue transition-colors">Conceito</a>
+                    <a href="#cores" class="text-sm font-semibold text-gray-700 hover:text-brand-light-blue transition-colors">Cores & Tipografia</a>
+                    <a href="#variacoes" class="text-sm font-semibold text-gray-700 hover:text-brand-light-blue transition-colors">Variações</a>
+                    <a href="#aplicacoes" class="text-sm font-semibold text-gray-700 hover:text-brand-light-blue transition-colors">Aplicações</a>
+                    <a href="#valores" class="text-sm font-semibold text-gray-700 hover:text-brand-light-blue transition-colors">Valores</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-brand-deep-blue focus:outline-none">
+                        <i class="ri-menu-3-line text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
+                <a href="#conceito" class="mobile-link px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-light-blue hover:bg-gray-50">Conceito</a>
+                <a href="#cores" class="mobile-link px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-light-blue hover:bg-gray-50">Cores & Tipografia</a>
+                <a href="#variacoes" class="mobile-link px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-light-blue hover:bg-gray-50">Variações</a>
+                <a href="#aplicacoes" class="mobile-link px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-light-blue hover:bg-gray-50">Aplicações</a>
+                <a href="#valores" class="mobile-link px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-light-blue hover:bg-gray-50">Valores</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-cinema-stage">
-            <div class="hero-depth-bg" aria-hidden="true"></div>
-            <div class="hero-noise" aria-hidden="true"></div>
-
-            <div class="hero-video-shell">
-                <video class="hero-logo-video" autoplay muted loop playsinline preload="auto" poster="logo.png" aria-label="Video de apresentacao da Escola Transicao">
-                    <source src="video-logo-inicio.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <div class="hero-scroll-cue" aria-hidden="true">
-                <span>Role para imergir</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </div>
-        </div>
-        <style>
-            .hero-bg-container {
-                position: absolute;
-                top: 0; left: 0; width: 100%; height: 100%;
-                z-index: 0;
-                overflow: hidden;
-            }
-            .hero-bg-img {
-                width: 100%; height: 100%; object-fit: cover;
-                animation: slowZoom 25s infinite alternate ease-in-out;
-                opacity: 1; /* Full opacity to be visible */
-            }
-            @keyframes slowZoom {
-                0% { transform: scale(1); }
-                100% { transform: scale(1.15); }
-            }
-            .hero-overlay {
-                position: absolute;
-                top: 0; left: 0; width: 100%; height: 100%;
-                /* Escurecimento suave nas cores da marca para dar contraste com o cartão branco */
-                background: rgba(0, 31, 92, 0.4); 
-                backdrop-filter: blur(3px); /* Desfoque bem leve para não esconder a foto */
-            }
-            .light-effect {
-                position: absolute;
-                border-radius: 50%;
-                filter: blur(80px);
-                opacity: 0.5;
-                animation: floatLight 12s infinite alternate ease-in-out;
-                z-index: 1;
-            }
-            .light-1 {
-                top: -10%; left: -10%; width: 50vw; height: 50vw;
-                background: var(--light-blue);
-                animation-delay: 0s;
-            }
-            .light-2 {
-                bottom: -20%; right: -10%; width: 60vw; height: 60vw;
-                background: var(--accent-cyan);
-                animation-delay: -6s;
-            }
-            @keyframes floatLight {
-                0% { transform: translate(0, 0) scale(1); }
-                100% { transform: translate(80px, 60px) scale(1.2); }
-            }
-            .hero-glass-card {
-                position: relative;
-                z-index: 2;
-                background: rgba(255, 255, 255, 0.85); /* Fundo mais branco para o logo destacar perfeito */
-                padding: 0;
-                border-radius: 32px;
-                box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-                backdrop-filter: blur(20px);
-                border: 1px solid rgba(255,255,255,0.9);
-                width: 100%;
-                max-width: 1100px;
-                aspect-ratio: 16 / 9;
-                overflow: hidden;
-            }
-            .hero-logo-video {
-                width: 100%;
-                height: 100%;
-                display: block;
-                object-fit: cover;
-                object-position: center;
-                background: var(--white);
-            }
-            .hero-glass-card > .hero-logo-img,
-            .hero-glass-card > #fallback-logo,
-            .hero-glass-card > #hero-text,
-            .hero-glass-card > p {
-                display: none !important;
-            }
-
-            /* Lightbox CSS */
-            .lightbox {
-                display: none;
-                position: fixed;
-                z-index: 9999;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.85);
-                align-items: center;
-                justify-content: center;
-                padding: 40px;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
-            .lightbox.active {
-                opacity: 1;
-            }
-            .lightbox img {
-                max-width: 90%;
-                max-height: 90vh;
-                object-fit: contain;
-                border-radius: 8px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-                transform: scale(0.95);
-                transition: transform 0.3s ease;
-            }
-            .lightbox.active img {
-                transform: scale(1);
-            }
-            .lightbox-close {
-                position: absolute;
-                top: 20px;
-                right: 40px;
-                color: white;
-                font-size: 40px;
-                cursor: pointer;
-                z-index: 10000;
-            }
-        </style>
+    <header id="home" class="relative bg-brand-sky-blue min-h-screen flex items-center justify-center overflow-hidden pt-32 lg:pt-40 pb-20">
         
-        <div class="hero-bg-container">
-            <img src="fachada-dia.jpg" class="hero-bg-img" alt="Background Fachada">
-            <div class="hero-overlay"></div>
-            <div class="light-effect light-1"></div>
-            <div class="light-effect light-2"></div>
-        </div>
+        <!-- Decorative Background Elements -->
+        <div class="absolute top-20 left-10 w-64 h-64 bg-brand-turquoise/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+        <div class="absolute top-40 right-10 w-72 h-72 bg-brand-yellow/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-1/2 w-80 h-80 bg-brand-light-blue/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
 
-        <div class="container hero-content hero-glass-card">
-            <!-- O logotipo original completo deve ser salvo como logo.png nesta mesma pasta -->
-            <img src="logo.png" alt="Logo Escola Transição" class="hero-logo-img" id="main-logo" onload="document.getElementById('hero-text').style.display='none';" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='block';">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
             
-            <div id="fallback-logo" style="display: none;">
-                <div class="hero-logo-icon">
-                    <i class="fa-solid fa-brain"></i>
-                </div>
-            </div>
-
-            <div id="hero-text" class="hero-text-container">
-                <h1>ESCOLA <span class="text-gradient animate-transicao">TRANSIÇÃO</span></h1>
-                <h2>Neuroescola Alcione Horny</h2>
-            </div>
+            <span class="fade-in-up text-brand-light-blue font-semibold tracking-widest uppercase text-sm mb-4 block mt-8">Apresentação da Nova Identidade Visual</span>
             
-            <p style="margin-top: 32px;">Cada criança, um jeito <strong>único</strong> de aprender.</p>
-        </div>
+            <h1 class="fade-in-up text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-brand-deep-blue mb-8 leading-[1.15] max-w-5xl mx-auto">
+                O começo de toda grande história<br class="hidden md:block"> é uma <span class="text-brand-light-blue italic relative inline-block">transição.<svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,15 Q50,-5 100,15" stroke="#FFC72C" stroke-width="4" fill="transparent"/></svg></span>
+            </h1>
+            
+            <p class="fade-in-up text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                Conheça a nova marca da Escola Transição. Projetada para representar movimento, conexão, evolução e o potencial brilhante de cada criança.
+            </p>
 
-        <div class="scroll-down">
-            <i class="fa-solid fa-chevron-down"></i>
-        </div>
-    </section>
 
-    <!-- DNA / Pillars Section -->
-    <section class="dna-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>DNA da Marca</h2>
-                <p class="text-gray">Nossos pilares fundamentais que guiam a educação e o desenvolvimento.</p>
-            </div>
-            <div class="pillars-grid">
-                <div class="pillar-card">
-                    <div class="pillar-icon">
-                        <i class="fa-solid fa-brain"></i>
-                    </div>
-                    <h3>Neurociência</h3>
-                    <p>que transforma</p>
-                </div>
-                <div class="pillar-card">
-                    <div class="pillar-icon">
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-                    <h3>Afeto</h3>
-                    <p>que acolhe</p>
-                </div>
-                <div class="pillar-card">
-                    <div class="pillar-icon">
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <h3>Desenvolvimento</h3>
-                    <p>que prepara para a vida</p>
-                </div>
-                <div class="pillar-card">
-                    <div class="pillar-icon">
-                        <i class="fa-solid fa-chart-line"></i>
-                    </div>
-                    <h3>Futuro</h3>
-                    <p>que se constrói hoje</p>
-                </div>
+
+            <!-- Video Logo Inicio -->
+            <div class="fade-in-up mt-20 relative w-full max-w-3xl px-4">
+                 <video src="video2-logo-inicio.mp4" autoplay controls class="w-full rounded-2xl shadow-2xl border-4 border-white" style="object-fit: cover;"></video>
             </div>
         </div>
-    </section>
 
-    <!-- Mascots Section -->
-    <section class="mascots-section">
-        <div class="container">
-            <div class="section-header mascots-header">
-                <h2>Conheça Nossos Mascotes</h2>
-                <p>Eles representam a energia, a curiosidade e o poder do cérebro em desenvolvimento.</p>
-            </div>
-            <div class="mascots-container">
+        <!-- Wave Divider -->
+        <div class="custom-shape-divider-bottom-1715715504">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Conceito Section -->
+    <section id="conceito" class="section-padding bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 fade-in-up">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                        <!-- Icon 1 -->
+                        <div class="text-center p-6 rounded-2xl bg-brand-sky-blue/50 hover:bg-brand-sky-blue transition duration-300">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-deep-blue text-3xl">
+                                <i class="ri-link"></i>
+                            </div>
+                            <h3 class="font-bold text-brand-deep-blue mb-2">Transição</h3>
+                            <p class="text-sm text-gray-600">Movimento que conecta histórias e constrói futuros.</p>
+                        </div>
+                        <!-- Icon 2 -->
+                        <div class="text-center p-6 rounded-2xl bg-brand-turquoise/10 hover:bg-brand-turquoise/20 transition duration-300">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-turquoise text-3xl">
+                                <i class="ri-plant-line"></i>
+                            </div>
+                            <h3 class="font-bold text-brand-deep-blue mb-2">Crescimento</h3>
+                            <p class="text-sm text-gray-600">Aprendizagem que floresce em cada fase da vida.</p>
+                        </div>
+                        <!-- Icon 3 -->
+                        <div class="text-center p-6 rounded-2xl bg-brand-yellow/10 hover:bg-brand-yellow/20 transition duration-300">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-yellow text-3xl">
+                                <i class="ri-star-smile-line"></i>
+                            </div>
+                            <h3 class="font-bold text-brand-deep-blue mb-2">Potencial</h3>
+                            <p class="text-sm text-gray-600">Cada criança brilha de forma única e especial.</p>
+                        </div>
+                    </div>
+                </div>
                 
-                <style>
-                    @keyframes floatMascot {
-                        0% { transform: translateY(0px); }
-                        50% { transform: translateY(-15px); }
-                        100% { transform: translateY(0px); }
-                    }
-                </style>
-                <!-- Neurinha -->
-                <div class="mascot-row neurinha-showcase">
-                    <div class="neurinha-slide neurinha-slide-blue">
-                    <div class="mascot-image-placeholder" style="padding: 0; background: transparent; border: none; box-shadow: none; overflow: visible;">
-                        <img src="neurinha.png" alt="Mascote Neurinha" style="width: 100%; height: auto; max-height: 450px; object-fit: contain; animation: floatMascot 4s ease-in-out infinite; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none'; this.parentElement.style.background='rgba(255, 255, 255, 0.1)'; this.parentElement.style.boxShadow='0 0 40px rgba(0, 168, 232, 0.2)'; this.nextElementSibling.style.display='inline-block';">
-                        <i class="fa-solid fa-child-reaching"></i>
+                <div class="order-1 lg:order-2 fade-in-up">
+                    <h2 class="text-sm font-bold text-brand-light-blue tracking-wider uppercase mb-4">O Conceito</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-brand-deep-blue mb-8">A essência por trás do símbolo.</h3>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        Nossa identidade representa movimento, conexão e evolução constante. O monograma estilizado, formando a letra 'T', não é apenas uma inicial, mas um caminho traçado com cuidado.
+                    </p>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                        A estrela no topo simboliza o grande potencial de cada criança e o objetivo brilhante que ela busca alcançar percorrendo seus sonhos.
+                    </p>
+                    <div class="border-l-4 border-brand-yellow pl-4 py-2">
+                        <p class="text-brand-deep-blue font-semibold italic text-xl">"O começo de toda grande história é uma transição."</p>
                     </div>
-                    <div class="mascot-info">
-                        <div class="mascot-tag">Nossa Mascote</div>
-                        <h3 class="mascot-name">Neurinha</h3>
-                        <p class="mascot-desc">
-                            Neurinha é curiosa, inteligente, carinhosa e adora aprender coisas novas! Ela acredita que cada mente é especial e que <strong>juntas podemos ir mais longe!</strong>
-                        </p>
-                        <div class="mascot-traits">
-                            <span class="trait-badge"><i class="fa-solid fa-magnifying-glass"></i> Curiosa</span>
-                            <span class="trait-badge"><i class="fa-solid fa-lightbulb"></i> Criativa</span>
-                            <span class="trait-badge"><i class="fa-solid fa-book-open"></i> Aprendiz</span>
-                            <span class="trait-badge"><i class="fa-solid fa-heart"></i> Carinhosa</span>
-                            <span class="trait-badge"><i class="fa-solid fa-star"></i> Inspiradora</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cores & Tipografia Section -->
+    <section id="cores" class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in-up">
+                <h2 class="text-sm font-bold text-brand-light-blue tracking-wider uppercase mb-4">Fundamentos Visuais</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-brand-deep-blue">Cores e Tipografia</h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Paleta de Cores -->
+                <div class="fade-in-up">
+                    <h4 class="text-xl font-bold text-brand-deep-blue mb-6 border-b pb-2">Paleta de Cores</h4>
+                    <div class="grid grid-cols-3 sm:grid-cols-6 gap-4">
+                        <!-- Azul Profundo -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-full aspect-square rounded-2xl shadow-md bg-brand-deep-blue mb-2 transition transform hover:scale-105 cursor-pointer" title="#003B8E"></div>
+                            <span class="text-xs font-bold text-gray-800 text-center uppercase">Azul Profundo</span>
+                            <span class="text-xs text-gray-500">#003B8E</span>
+                        </div>
+                        <!-- Azul Claro -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-full aspect-square rounded-2xl shadow-md bg-brand-light-blue mb-2 transition transform hover:scale-105 cursor-pointer" title="#0FA3E6"></div>
+                            <span class="text-xs font-bold text-gray-800 text-center uppercase">Azul Claro</span>
+                            <span class="text-xs text-gray-500">#0FA3E6</span>
+                        </div>
+                        <!-- Turquesa -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-full aspect-square rounded-2xl shadow-md bg-brand-turquoise mb-2 transition transform hover:scale-105 cursor-pointer" title="#29C0B1"></div>
+                            <span class="text-xs font-bold text-gray-800 text-center uppercase">Turquesa</span>
+                            <span class="text-xs text-gray-500">#29C0B1</span>
+                        </div>
+                        <!-- Amarelo -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-full aspect-square rounded-2xl shadow-md bg-brand-yellow mb-2 transition transform hover:scale-105 cursor-pointer" title="#FFC72C"></div>
+                            <span class="text-xs font-bold text-gray-800 text-center uppercase">Amarelo</span>
+                            <span class="text-xs text-gray-500">#FFC72C</span>
+                        </div>
+                        <!-- Azul Céu -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-full aspect-square rounded-2xl shadow-md bg-brand-sky-blue mb-2 transition transform hover:scale-105 cursor-pointer" title="#E6F3FF"></div>
+                            <span class="text-xs font-bold text-gray-800 text-center uppercase">Azul Céu</span>
+                            <span class="text-xs text-gray-500">#E6F3FF</span>
+                        </div>
+                        <!-- Branco -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-full aspect-square rounded-2xl shadow-sm border border-gray-200 bg-brand-white mb-2 transition transform hover:scale-105 cursor-pointer" title="#FFFFFF"></div>
+                            <span class="text-xs font-bold text-gray-800 text-center uppercase">Branco</span>
+                            <span class="text-xs text-gray-500">#FFFFFF</span>
                         </div>
                     </div>
-                    </div>
-                    <div class="neurinha-slide neurinha-slide-pink">
-                        <div class="pink-mascot-photo" onclick="openLightbox('neurinha-rosa-nova.png')" title="Clique para ampliar">
-                            <img src="neurinha-rosa-nova.png" alt="Neurinha rosa">
+                </div>
+
+                <!-- Tipografia -->
+                <div class="fade-in-up">
+                    <h4 class="text-xl font-bold text-brand-deep-blue mb-6 border-b pb-2">Tipografia</h4>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <div class="mb-6">
+                            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Títulos - Poppins Bold</p>
+                            <div class="flex items-end gap-4">
+                                <span class="text-5xl font-bold text-brand-deep-blue">Aa</span>
+                                <p class="text-sm text-gray-600 break-all font-bold">
+                                    ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+                                    abcdefghijklmnopqrstuvwxyz<br>
+                                    0123456789
+                                </p>
+                            </div>
                         </div>
-                        <div class="mascot-info pink-mascot-info">
-                            <div class="mascot-tag">Nossa Mascote</div>
-                            <h3 class="mascot-name">Neurinha Rosa</h3>
-                            <p class="mascot-desc">
-                                Sonhadora, emp&aacute;tica e criativa, acredita que o aprendizado transforma o mundo com afeto, imagina&ccedil;&atilde;o e coragem.
-                            </p>
-                            <div class="mascot-traits">
-                                <span class="trait-badge"><i class="fa-solid fa-heart"></i> Emp&aacute;tica</span>
-                                <span class="trait-badge"><i class="fa-solid fa-lightbulb"></i> Criativa</span>
-                                <span class="trait-badge"><i class="fa-solid fa-star"></i> Determinada</span>
-                                <span class="trait-badge"><i class="fa-solid fa-seedling"></i> Inspiradora</span>
-                                <span class="trait-badge"><i class="fa-solid fa-magnifying-glass"></i> Curiosa</span>
+                        <div>
+                            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Textos - Poppins Regular</p>
+                            <div class="flex items-end gap-4">
+                                <span class="text-5xl font-normal text-brand-deep-blue">Aa</span>
+                                <p class="text-sm text-gray-600 break-all">
+                                    ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+                                    abcdefghijklmnopqrstuvwxyz<br>
+                                    0123456789
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="neurinha-mode-indicator" aria-hidden="true">
-                        <span></span>
-                        <span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Variações e Submarcas Section -->
+    <section id="variacoes" class="section-padding relative overflow-hidden bg-gradient-to-b from-white to-slate-50">
+        <!-- Efeito Aurora/Orb -->
+        <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-brand-light-blue rounded-full mix-blend-multiply filter blur-[100px] opacity-10 pointer-events-none transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-brand-turquoise rounded-full mix-blend-multiply filter blur-[100px] opacity-10 pointer-events-none transform translate-x-1/3 translate-y-1/3"></div>
+        <div class="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-brand-yellow rounded-full mix-blend-multiply filter blur-[100px] opacity-5 pointer-events-none transform -translate-x-1/2 -translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Cabeçalho -->
+            <div class="text-center mb-20">
+                <span class="fade-in-up inline-block text-sm font-bold text-brand-light-blue tracking-wider uppercase mb-4" style="transition-delay: 0ms;">Identidade Flexível</span>
+                <h3 class="fade-in-up text-4xl md:text-5xl font-bold text-brand-deep-blue mb-6" style="transition-delay: 100ms;">Variações & Submarcas</h3>
+                <p class="fade-in-up text-gray-500 max-w-2xl mx-auto text-lg" style="transition-delay: 200ms;">Um ecossistema visual dinâmico, desenhado para se adaptar a diferentes formatos, fundos e momentos de aprendizagem da criança.</p>
+            </div>
+
+            <!-- Bloco 1: Variações do Logo -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 items-stretch">
+                <!-- Card 1: Fundo Claro -->
+                <div class="fade-in-up group relative bg-white border border-gray-100 rounded-[2rem] p-8 lg:p-10 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col" style="transition-delay: 100ms;">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-light-blue to-brand-turquoise opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="mb-8 relative z-10 flex-shrink-0">
+                        <h4 class="text-2xl font-bold text-brand-deep-blue mb-3">Fundo Claro</h4>
+                        <p class="text-base text-gray-500 leading-relaxed">Aplicação padrão para materiais institucionais, ofícios e fundos brancos.</p>
+                    </div>
+                    <div class="h-48 md:h-56 w-full relative rounded-2xl flex items-center justify-center transition-colors duration-500 flex-grow">
+                        <img src="logo-claro.png" alt="Logo Escola Transição" class="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform duration-700 mix-blend-multiply">
                     </div>
                 </div>
 
-                <!-- Neurinho -->
-                <div class="mascot-row">
-                    <div class="mascot-image-placeholder" style="padding: 0; background: transparent; border: none; box-shadow: none; overflow: visible;">
-                        <img src="neurinho.png" alt="Mascote Neurinho" style="width: 100%; height: auto; max-height: 450px; object-fit: contain; animation: floatMascot 4s ease-in-out infinite; animation-delay: 1s; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none'; this.parentElement.style.background='rgba(255, 255, 255, 0.1)'; this.parentElement.style.boxShadow='0 0 40px rgba(0, 168, 232, 0.2)'; this.nextElementSibling.style.display='inline-block';">
-                        <i class="fa-solid fa-child"></i>
+                <!-- Card 2: Monocromática -->
+                <div class="fade-in-up group relative bg-slate-50 border border-transparent rounded-[2rem] p-8 lg:p-10 hover:bg-brand-sky-blue/10 transition-colors duration-500 shadow-md hover:shadow-xl transform hover:-translate-y-2 cursor-pointer overflow-hidden flex flex-col" style="transition-delay: 200ms;">
+                    <div class="mb-8 relative z-10 flex-shrink-0">
+                        <h4 class="text-2xl font-bold text-gray-800 mb-3">Monocromática</h4>
+                        <p class="text-base text-gray-500 leading-relaxed">Versão otimizada para impressões em uma cor, carimbos e faxes.</p>
                     </div>
-                    <div class="mascot-info">
-                        <div class="mascot-tag">Nosso Mascote</div>
-                        <h3 class="mascot-name">Neurinho</h3>
-                        <p class="mascot-desc">
-                            Curioso, inteligente e cheio de ideias! Neurinho adora aprender, fazer perguntas e descobrir coisas novas todos os dias. Ele representa o poder do cérebro em constante desenvolvimento!
-                        </p>
-                        <div class="mascot-traits">
-                            <span class="trait-badge"><i class="fa-solid fa-magnifying-glass"></i> Curioso</span>
-                            <span class="trait-badge"><i class="fa-solid fa-lightbulb"></i> Criativo</span>
-                            <span class="trait-badge"><i class="fa-solid fa-book"></i> Estudioso</span>
-                            <span class="trait-badge"><i class="fa-solid fa-thumbs-up"></i> Amigo</span>
-                            <span class="trait-badge"><i class="fa-solid fa-rocket"></i> Inovador</span>
+                    <div class="h-48 md:h-56 w-full relative rounded-2xl flex items-center justify-center transition-colors duration-500 flex-grow">
+                        <img src="logo-mono.png" alt="Logo Monocromática" class="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform duration-700 mix-blend-multiply opacity-90 group-hover:opacity-100">
+                    </div>
+                </div>
+
+                <!-- Card 3: Negativo -->
+                <div class="fade-in-up group relative bg-[#03265F] rounded-[2rem] p-8 lg:p-10 shadow-xl shadow-[#03265F]/30 hover:shadow-2xl hover:shadow-brand-light-blue/40 transition-all duration-500 transform hover:-translate-y-2 cursor-pointer overflow-hidden flex flex-col" style="transition-delay: 300ms;">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
+                    <div class="relative z-10 mb-8 flex-shrink-0">
+                        <h4 class="text-2xl font-bold text-white mb-3">Negativa</h4>
+                        <p class="text-base text-white/80 leading-relaxed">Aplicação de alto contraste para fundos escuros e fotografias.</p>
+                    </div>
+                    <div class="relative z-10 h-48 md:h-56 w-full flex items-center justify-center flex-grow">
+                        <img src="logo-negativa.png" alt="Logo Negativa" class="max-w-full max-h-full object-contain transform group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloco 2: Submarcas / Fases -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 max-w-4xl mx-auto gap-8 mb-20">
+                <!-- Baby -->
+                <div class="fade-in-up group bg-white/80 backdrop-blur-sm border-2 border-transparent hover:border-pink-200 rounded-3xl p-8 lg:p-10 shadow-sm hover:shadow-lg transform hover:-translate-y-2 transition-all duration-300 cursor-pointer" style="transition-delay: 100ms;">
+                    <div class="w-20 h-20 rounded-2xl bg-pink-100 flex items-center justify-center text-pink-500 mb-8 group-hover:rotate-12 transition-transform duration-300">
+                        <i class="ri-bear-smile-line text-5xl"></i>
+                    </div>
+                    <span class="inline-block px-4 py-1.5 bg-pink-50 text-pink-600 text-sm font-bold rounded-full mb-4">0 a 3 anos</span>
+                    <h5 class="text-3xl font-bold text-brand-deep-blue mb-4">Transição <span class="text-pink-500">Baby</span></h5>
+                    <p class="text-lg text-gray-500 leading-relaxed">Cuidar é o primeiro aprender. Afeto e segurança emocional.</p>
+                </div>
+
+                <!-- Kids -->
+                <div class="fade-in-up group bg-white/80 backdrop-blur-sm border-2 border-transparent hover:border-brand-yellow/50 rounded-3xl p-8 lg:p-10 shadow-sm hover:shadow-lg transform hover:-translate-y-2 transition-all duration-300 cursor-pointer" style="transition-delay: 200ms;">
+                    <div class="w-20 h-20 rounded-2xl bg-yellow-100 flex items-center justify-center text-brand-yellow mb-8 group-hover:-rotate-12 transition-transform duration-300">
+                        <i class="ri-aliens-line text-5xl"></i>
+                    </div>
+                    <span class="inline-block px-4 py-1.5 bg-yellow-50 text-yellow-600 text-sm font-bold rounded-full mb-4">Educação Infantil</span>
+                    <h5 class="text-3xl font-bold text-brand-deep-blue mb-4">Transição <span class="text-brand-yellow">Kids</span></h5>
+                    <p class="text-lg text-gray-500 leading-relaxed">Descobrir é o nosso jeito. Exploração criativa e socialização.</p>
+                </div>
+            </div>
+
+            <!-- Bloco 3: Prancha Oficial -->
+            <div class="fade-in-up max-w-5xl mx-auto" style="transition-delay: 500ms;">
+                <div class="bg-white rounded-[2rem] p-6 sm:p-10 shadow-xl border border-gray-100 group cursor-pointer">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8">
+                        <div>
+                            <h4 class="text-2xl font-bold text-brand-deep-blue">Prancha Oficial</h4>
+                            <p class="text-sm text-gray-500 mt-1">Aplicações com Neuroescola Alcione Horny</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-brand-light-blue group-hover:text-white transition-colors duration-300 mt-4 sm:mt-0">
+                            <i class="ri-zoom-in-line text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="w-full rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 relative">
+                        <img src="logo-variacao-01.png" alt="Prancha de Aplicação da Marca" class="w-full object-cover transform group-hover:scale-[1.02] transition-transform duration-700">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aplicações Section -->
+    <section id="aplicacoes" class="section-padding bg-brand-sky-blue/30 overflow-hidden relative">
+        <!-- Elementos decorativos -->
+        <div class="absolute top-40 left-0 w-96 h-96 bg-brand-light-blue/10 rounded-full mix-blend-multiply filter blur-3xl opacity-50 pointer-events-none"></div>
+        <div class="absolute bottom-40 right-0 w-96 h-96 bg-brand-turquoise/10 rounded-full mix-blend-multiply filter blur-3xl opacity-50 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-sm font-bold text-brand-light-blue tracking-wider uppercase mb-4">Materialização</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-brand-deep-blue">Aplicações da Marca</h3>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto text-lg">A identidade visual ganhando vida em diferentes pontos de contato, criando um universo lúdico, coerente e engajador.</p>
+            </div>
+
+            <div class="flex flex-col gap-16">
+                <!-- Padrões Visuais -->
+                <div class="fade-in-up w-full rounded-[2rem] overflow-hidden shadow-xl bg-white border border-gray-100 hover:shadow-2xl hover:shadow-brand-light-blue/20 transition-all duration-500 transform hover:-translate-y-2 group">
+                    <img src="padroes.png" alt="Padrões Visuais da Escola Transição" class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-700">
+                </div>
+
+                <!-- Materiais Institucionais -->
+                <div class="fade-in-up w-full rounded-[2rem] overflow-hidden shadow-xl bg-white border border-gray-100 hover:shadow-2xl hover:shadow-brand-deep-blue/20 transition-all duration-500 transform hover:-translate-y-2 group">
+                    <img src="aplicacoes.png" alt="Aplicações em Materiais e Vestuário" class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-700">
+                </div>
+
+                <!-- Redes Sociais -->
+                <div class="fade-in-up w-full rounded-[2rem] overflow-hidden shadow-xl bg-white border border-gray-100 hover:shadow-2xl hover:shadow-brand-yellow/20 transition-all duration-500 transform hover:-translate-y-2 group">
+                    <img src="redes-sociais.png" alt="Aplicações em Redes Sociais" class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores e Propósito Section -->
+    <section id="valores" class="py-20 bg-brand-deep-blue text-white relative overflow-hidden">
+        
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full border-4 border-white/5 opacity-50"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full border-4 border-brand-yellow/10 opacity-50"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                
+                <!-- Propósito -->
+                <div class="lg:col-span-1 fade-in-up">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="ri-heart-3-fill text-brand-yellow text-2xl"></i>
+                        <h3 class="text-2xl font-bold">Nosso Propósito</h3>
+                    </div>
+                    <p class="text-brand-sky-blue/80 text-lg leading-relaxed">
+                        Acreditamos que cada criança tem um jeito único de aprender, sonhar e transformar o mundo.
+                    </p>
+                </div>
+
+                <!-- Valores -->
+                <div class="lg:col-span-2 fade-in-up">
+                    <h3 class="text-2xl font-bold mb-8">Nossos Valores</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+                        <!-- Afeto -->
+                        <div class="text-center group">
+                            <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-brand-yellow transition-colors duration-300">
+                                <i class="ri-heart-pulse-line text-2xl group-hover:text-brand-deep-blue transition-colors"></i>
+                            </div>
+                            <h4 class="font-bold text-sm uppercase">Afeto</h4>
+                            <p class="text-xs text-brand-sky-blue/70 mt-1">que acolhe</p>
+                        </div>
+                        <!-- Respeito -->
+                        <div class="text-center group">
+                            <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-brand-turquoise transition-colors duration-300">
+                                <i class="ri-group-line text-2xl group-hover:text-brand-deep-blue transition-colors"></i>
+                            </div>
+                            <h4 class="font-bold text-sm uppercase">Respeito</h4>
+                            <p class="text-xs text-brand-sky-blue/70 mt-1">que constrói</p>
+                        </div>
+                        <!-- Confiança -->
+                        <div class="text-center group">
+                            <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-brand-light-blue transition-colors duration-300">
+                                <i class="ri-shield-star-line text-2xl group-hover:text-brand-deep-blue transition-colors"></i>
+                            </div>
+                            <h4 class="font-bold text-sm uppercase">Confiança</h4>
+                            <p class="text-xs text-brand-sky-blue/70 mt-1">que conecta</p>
+                        </div>
+                        <!-- Excelência -->
+                        <div class="text-center group">
+                            <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white transition-colors duration-300">
+                                <i class="ri-medal-line text-2xl group-hover:text-brand-deep-blue transition-colors"></i>
+                            </div>
+                            <h4 class="font-bold text-sm uppercase">Excelência</h4>
+                            <p class="text-xs text-brand-sky-blue/70 mt-1">que inspira</p>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Color Palette Section -->
-    <section class="palette-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Cores da Marca</h2>
-                <p class="text-gray">Nossa paleta transmite confiança, tranquilidade e modernidade.</p>
-            </div>
-            <div class="colors-container">
-                <div class="color-swatch">
-                    <div class="color-circle" style="background-color: #001f5c;"></div>
-                    <p>Azul Profundo</p>
-                </div>
-                <div class="color-swatch">
-                    <div class="color-circle" style="background-color: #003b9e;"></div>
-                    <p>Azul Primário</p>
-                </div>
-                <div class="color-swatch">
-                    <div class="color-circle" style="background-color: #005ce6;"></div>
-                    <p>Azul Vibrante</p>
-                </div>
-                <div class="color-swatch">
-                    <div class="color-circle" style="background-color: #00a8e8;"></div>
-                    <p>Ciano Detalhe</p>
-                </div>
-                <div class="color-swatch">
-                    <div class="color-circle" style="background-color: #e6f0ff;"></div>
-                    <p>Azul Claro</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Applications Section -->
-    <section class="apps-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Aplicações da Marca</h2>
-                <p class="text-gray">Como nossa identidade ganha vida nos espaços e materiais da escola.</p>
-            </div>
-            <div class="apps-grid">
-                <div class="app-card facade">
-                    <div class="app-image" onclick="openLightbox('fachada-dia.jpg')" title="Clique para ampliar">
-                        <img src="fachada-dia.jpg" alt="Fachada Dia" class="facade-img" onload="this.parentElement.querySelector('i').style.display='none';" onerror="this.style.display='none';">
-                        <img src="fachada-noite.jpg" alt="Fachada Noite" class="facade-img facade-night" onerror="this.style.display='none';">
-                        <i class="fa-solid fa-school"></i>
-                    </div>
-                    <div class="app-content">
-                        <h3>Fachada Externa</h3>
-                        <p>Uma recepção acolhedora e impactante, destacando nossos mascotes, nosso logo e a promessa: "Cada criança, um jeito único de aprender."</p>
-                    </div>
-                </div>
-                <div class="app-card interior">
-                    <div class="app-image" onclick="openLightbox('interno-depois.jpg')" title="Clique para ampliar">
-                        <img src="interno-antes.jpg" alt="Espaço Interno Antes" class="interior-img" onload="this.parentElement.querySelector('i').style.display='none';" onerror="this.style.display='none';">
-                        <img src="interno-depois.jpg" alt="Espaço Interno Depois" class="interior-img interior-after" onerror="this.style.display='none';">
-                        <i class="fa-solid fa-shapes"></i>
-                    </div>
-                    <div class="app-content">
-                        <h3>Espaços Internos</h3>
-                        <p>Salas dinâmicas com piso emborrachado azul, murais educativos e a presença constante da Neurinha e do Neurinho para inspirar os alunos.</p>
-                    </div>
-                </div>
-                <div class="app-card merch">
-                    <div class="app-image" style="background: #fff;" onclick="openLightbox('merchandising.png')" title="Clique para ampliar">
-                        <img src="merchandising.png" alt="Aplicações Diversas" class="interior-img" style="object-fit: contain; padding: 20px;" onload="this.parentElement.querySelector('i').style.display='none';" onerror="this.style.display='none';">
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-                    <div class="app-content">
-                        <h3>Uniformes e Merchandising</h3>
-                        <p>A identidade visual aplicada em mochilas, camisetas, garrafas e cadernos, mantendo a coerência e a alegria da marca em todos os pontos de contato.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Media Section -->
-    <section class="social-section" style="padding: 80px 0; background: var(--white);">
-        <div class="container">
-            <div class="section-header">
-                <h2>Redes Sociais</h2>
-                <p class="text-gray">Comunicação digital atrativa, informativa e engajadora, focada nos pilares da neuroescola.</p>
-            </div>
-            <div class="social-mockup" style="text-align: center; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); cursor: zoom-in; max-width: 1000px; margin: 0 auto; transition: transform 0.3s ease;" onclick="openLightbox('redes-sociais.jpg')" title="Clique para ampliar" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                <img src="redes-sociais.jpg" alt="Exemplos de Posts Redes Sociais" style="width: 100%; height: auto; display: block;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding: 100px; background: var(--light-blue); color: var(--primary-blue);\'><i class=\'fa-brands fa-instagram\' style=\'font-size: 60px; margin-bottom: 20px;\'></i><br><h3>Design de Redes Sociais</h3></div>';">
-            </div>
-        </div>
-    </section>
-
-    <!-- Logo Variations Section -->
-    <style>
-        .logos-section {
-            background: var(--bg-light);
-            padding: 100px 0;
-        }
-
-        .logo-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 48px;
-        }
-
-        .logo-tab-btn {
-            padding: 10px 28px;
-            border-radius: var(--radius-full);
-            border: 2px solid var(--primary-blue);
-            background: transparent;
-            color: var(--primary-blue);
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-        }
-
-        .logo-tab-btn:hover,
-        .logo-tab-btn.active {
-            background: var(--primary-blue);
-            color: var(--white);
-            box-shadow: 0 4px 15px rgba(0, 59, 158, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .logo-tab-panel {
-            display: none;
-            animation: fadeInUp 0.4s ease;
-        }
-
-        .logo-tab-panel.active {
-            display: block;
-        }
-
-        .logo-process-intro {
-            max-width: 880px;
-            margin: -24px auto 44px;
-            text-align: center;
-            color: var(--text-gray);
-            font-size: 1.05rem;
-        }
-
-        .logo-grid-main {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            cursor: zoom-in;
-            max-width: 960px;
-            margin: 0 auto 32px;
-            transition: all 0.3s ease;
-        }
-
-        .logo-grid-main:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-4px);
-        }
-
-        .logo-grid-main img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .logo-proposal-note {
-            text-align: center;
-            margin-top: 16px;
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-
-        .logo-proposal-note strong {
-            color: var(--primary-blue);
-        }
-
-        .name-variations-section {
-            background: var(--bg-light);
-            padding: 0 0 100px;
-        }
-
-        .name-variations-intro {
-            max-width: 860px;
-            margin: -20px auto 40px;
-            text-align: center;
-            color: var(--text-gray);
-            font-size: 1.05rem;
-        }
-
-        .name-variations-stack {
-            display: grid;
-            gap: 36px;
-        }
-
-        .name-variation-frame {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            cursor: zoom-in;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .name-variation-frame:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 28px 55px rgba(0, 31, 92, 0.16);
-        }
-
-        .name-variation-frame img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        @media (max-width: 640px) {
-            .logo-tab-btn {
-                width: 100%;
-            }
-
-            .name-variations-section {
-                padding-bottom: 72px;
-            }
-
-            .name-variations-stack {
-                gap: 24px;
-            }
-        }
-    </style>
-
-    <section class="logos-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Varia&ccedil;&otilde;es do Logotipo</h2>
-                <p class="text-gray">Estudos visuais criados para encontrar a forma mais forte da marca Escola Transi&ccedil;&atilde;o.</p>
-            </div>
-            <p class="logo-process-intro">
-                Partimos de modelos que exploravam desenvolvimento infantil, neuroci&ecirc;ncia, afeto e aprendizagem. A partir dessas varia&ccedil;&otilde;es, refinamos o s&iacute;mbolo, a composi&ccedil;&atilde;o tipogr&aacute;fica e a paleta azul at&eacute; chegar a um resultado final mais claro, institucional e acolhedor.
+    <footer class="bg-brand-deep-blue border-t border-white/10 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col md:flex-row justify-between items-center">
+            <p class="text-brand-sky-blue/60 text-sm mb-4 md:mb-0">
+                &copy; 2026 Escola Transição. Apresentação de Identidade Visual.
             </p>
-
-            <div class="logo-tabs" role="tablist">
-                <button class="logo-tab-btn active" onclick="switchLogoTab('proposta-a', this)" id="tab-a">Explora&ccedil;&atilde;o 1</button>
-                <button class="logo-tab-btn" onclick="switchLogoTab('proposta-b', this)" id="tab-b">Explora&ccedil;&atilde;o 2</button>
-                <button class="logo-tab-btn" onclick="switchLogoTab('proposta-c', this)" id="tab-c">Explora&ccedil;&atilde;o 3</button>
-                <button class="logo-tab-btn" onclick="switchLogoTab('proposta-d', this)" id="tab-d">Modelo final</button>
+            <div class="flex items-center gap-2 text-brand-yellow font-semibold text-sm">
+                <span>Preparar hoje, transformar sempre.</span>
+                <i class="ri-sparkling-fill"></i>
             </div>
-
-            <div class="logo-tab-panel active" id="proposta-a">
-                <div class="logo-grid-main" onclick="openLightbox('logo-variacao-01.png')" title="Clique para ampliar">
-                    <img src="logo-variacao-01.png" alt="Explora&ccedil;&atilde;o de logotipo com fases do desenvolvimento infantil">
-                </div>
-                <p class="logo-proposal-note">Conceito: <strong>jornada de desenvolvimento</strong> com crescimento, movimento e a ideia de cada crian&ccedil;a avan&ccedil;ando no seu pr&oacute;prio ritmo.</p>
-            </div>
-
-            <div class="logo-tab-panel" id="proposta-b">
-                <div class="logo-grid-main" onclick="openLightbox('logo-variacao-02.png')" title="Clique para ampliar">
-                    <img src="logo-variacao-02.png" alt="Explora&ccedil;&atilde;o de logotipo com crian&ccedil;a, c&eacute;rebro e afeto">
-                </div>
-                <p class="logo-proposal-note">Conceito: <strong>neuroci&ecirc;ncia com afeto</strong>, aproximando c&eacute;rebro, cora&ccedil;&atilde;o e acolhimento em uma marca mais humana.</p>
-            </div>
-
-            <div class="logo-tab-panel" id="proposta-c">
-                <div class="logo-grid-main" onclick="openLightbox('logo-variacao-03.png')" title="Clique para ampliar">
-                    <img src="logo-variacao-03.png" alt="Explora&ccedil;&atilde;o de logotipo com composi&ccedil;&otilde;es l&uacute;dicas e educativas">
-                </div>
-                <p class="logo-proposal-note">Conceito: <strong>aprendizagem l&uacute;dica</strong>, testando caminhos mais afetivos, leves e infantis para equilibrar cuidado e educa&ccedil;&atilde;o.</p>
-            </div>
-
-            <div class="logo-tab-panel" id="proposta-d">
-                <div class="logo-grid-main" onclick="openLightbox('logo-variacao-04.png')" title="Clique para ampliar">
-                    <img src="logo-variacao-04.png" alt="Modelo final do logotipo Escola Transi&ccedil;&atilde;o">
-                </div>
-                <p class="logo-proposal-note">Modelo escolhido: <strong>identidade final mais madura e memor&aacute;vel</strong>, unindo o perfil humano, as conex&otilde;es neurais e uma tipografia forte para transmitir confian&ccedil;a, futuro e acolhimento.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Name Variations Section -->
-    <section class="name-variations-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Varia&ccedil;&otilde;es dos Nomes</h2>
-                <p class="text-gray">Op&ccedil;&otilde;es de nomes para os mascotes, organizadas para compara&ccedil;&atilde;o e escolha do cliente.</p>
-            </div>
-            <p class="name-variations-intro">
-                As pranchas abaixo apresentam caminhos masculinos e femininos com estilos diferentes, mantendo a leitura grande para facilitar a avalia&ccedil;&atilde;o.
-            </p>
-            <div class="name-variations-stack">
-                <div class="name-variation-frame" onclick="openLightbox('variacoes-nomes-01.png')" title="Clique para ampliar">
-                    <img src="variacoes-nomes-01.png" alt="Varia&ccedil;&otilde;es de nomes Theo e Luna para os mascotes">
-                </div>
-                <div class="name-variation-frame" onclick="openLightbox('variacoes-nomes-02.png')" title="Clique para ampliar">
-                    <img src="variacoes-nomes-02.png" alt="Varia&ccedil;&otilde;es de nomes Neurinho e Neurinha para os mascotes">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <span class="footer-logo">ESCOLA TRANSIÇÃO</span>
-            <p>Neuroescola Alcione Horny &copy; 2026. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <!-- Lightbox Modal -->
-    <div class="lightbox" id="imageLightbox" onclick="closeLightbox()">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <img id="lightboxImg" src="" alt="Imagem ampliada" onclick="event.stopPropagation()">
-    </div>
-
-    <!-- Scripts for simple interactions -->
+    <!-- Scripts -->
     <script>
-        function initCinematicHero() {
-            if (!window.gsap || !window.ScrollTrigger) return;
-
-            gsap.registerPlugin(ScrollTrigger);
-
-            const hero = document.querySelector('.hero');
-            const stage = document.querySelector('.hero-cinema-stage');
-            const videoShell = document.querySelector('.hero-video-shell');
-            const video = document.querySelector('.hero-logo-video');
-            const cue = document.querySelector('.hero-scroll-cue');
-            const depthBg = document.querySelector('.hero-depth-bg');
-
-            if (!hero || !stage || !videoShell || !video) return;
-
-            const cinematic = gsap.timeline({
-                defaults: { ease: 'power3.inOut' },
-                scrollTrigger: {
-                    trigger: hero,
-                    start: 'top top',
-                    end: 'bottom bottom',
-                    scrub: 1.35,
-                    pin: stage,
-                    pinSpacing: false,
-                    anticipatePin: 1,
-                    invalidateOnRefresh: true
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Navbar Scroll Effect ---
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-md');
+                    navbar.classList.remove('bg-transparent');
+                } else {
+                    navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-md');
+                    navbar.classList.add('bg-transparent');
                 }
             });
 
-            cinematic
-                .fromTo(videoShell,
-                    {
-                        width: () => window.innerWidth < 768 ? '92vw' : '58vw',
-                        height: () => window.innerWidth < 768 ? '51.75vw' : '32.625vw',
-                        borderRadius: () => window.innerWidth < 768 ? '18px' : '34px',
-                        y: () => window.innerWidth < 768 ? 34 : 22,
-                        boxShadow: '0 46px 120px rgba(0, 31, 92, 0.24), 0 18px 42px rgba(0, 168, 232, 0.16)'
-                    },
-                    {
-                        width: '100vw',
-                        height: () => window.innerWidth < 768 ? '100svh' : '100vh',
-                        borderRadius: '0px',
-                        y: 0,
-                        boxShadow: '0 0 0 rgba(0, 31, 92, 0)',
-                        duration: 1
-                    },
-                    0
-                )
-                .fromTo(video,
-                    { scale: 1.06, filter: 'saturate(1.08) contrast(1.02)' },
-                    { scale: 1, filter: 'saturate(1.16) contrast(1.04)', duration: 1 },
-                    0
-                )
-                .to(cue, { opacity: 0, y: 26, filter: 'blur(8px)', duration: 0.24 }, 0.04)
-                .to(depthBg, { scale: 1.18, opacity: 0.18, filter: 'blur(28px) saturate(1.28)', duration: 1 }, 0);
-        }
+            // --- Mobile Menu Toggle ---
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        function openLightbox(imgSrc) {
-            const lightbox = document.getElementById('imageLightbox');
-            const lightboxImg = document.getElementById('lightboxImg');
-            lightboxImg.src = imgSrc;
-            lightbox.style.display = 'flex';
-            // Force reflow
-            void lightbox.offsetWidth;
-            lightbox.classList.add('active');
-        }
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
 
-        function switchLogoTab(panelId, btn) {
-            // Deactivate all panels and buttons
-            document.querySelectorAll('.logo-tab-panel').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.logo-tab-btn').forEach(b => b.classList.remove('active'));
-            // Activate selected
-            document.getElementById(panelId).classList.add('active');
-            btn.classList.add('active');
-        }
+            // Close mobile menu when a link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
 
-        function closeLightbox() {
-            const lightbox = document.getElementById('imageLightbox');
-            lightbox.classList.remove('active');
-            setTimeout(() => {
-                lightbox.style.display = 'none';
-            }, 300);
-        }
-        // Add simple scroll reveal animation
-        document.addEventListener('DOMContentLoaded', () => {
-            initCinematicHero();
-
+            // --- Intersection Observer for Fade-in Animation ---
             const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Trigger when 15% of element is visible
             };
 
-            const observer = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                        observer.unobserve(entry.target);
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Animate only once
                     }
                 });
             }, observerOptions);
 
-            const animatedElements = document.querySelectorAll('.pillar-card, .mascot-row, .app-card, .color-swatch');
-            
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-                observer.observe(el);
-            });
+            const fadeElements = document.querySelectorAll('.fade-in-up');
+            fadeElements.forEach(el => observer.observe(el));
         });
     </script>
 </body>
