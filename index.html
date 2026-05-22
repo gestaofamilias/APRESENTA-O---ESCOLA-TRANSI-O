@@ -91,6 +91,86 @@
             background: #003B8E; 
         }
 
+        /* Lightbox */
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0);
+            backdrop-filter: blur(0px);
+            pointer-events: none;
+            transition: background 0.4s ease, backdrop-filter 0.4s ease;
+        }
+        #lightbox.active {
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(12px);
+            pointer-events: all;
+        }
+        #lightbox-img {
+            max-width: 92vw;
+            max-height: 90vh;
+            border-radius: 1.5rem;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+            object-fit: contain;
+            transform: scale(0.6) translateY(40px);
+            opacity: 0;
+            transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1), opacity 0.35s ease;
+        }
+        #lightbox.active #lightbox-img {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+        #lightbox-close {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            border: 1.5px solid rgba(255,255,255,0.3);
+            color: white;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0.7) rotate(-90deg);
+            transition: opacity 0.35s ease 0.1s, transform 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.1s, background 0.2s;
+            backdrop-filter: blur(8px);
+        }
+        #lightbox.active #lightbox-close {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+        #lightbox-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        #lightbox-caption {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            color: rgba(255,255,255,0.75);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+            white-space: nowrap;
+        }
+        #lightbox.active #lightbox-caption {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .lightbox-trigger {
+            cursor: zoom-in;
+        }
+
         /* Shape divider */
         .custom-shape-divider-bottom-1715715504 {
             position: absolute;
@@ -115,6 +195,13 @@
     </style>
 </head>
 <body class="antialiased selection:bg-brand-yellow selection:text-brand-deep-blue">
+
+    <!-- Lightbox Overlay -->
+    <div id="lightbox">
+        <img id="lightbox-img" src="" alt="">
+        <button id="lightbox-close"><i class="ri-close-line"></i></button>
+        <span id="lightbox-caption"></span>
+    </div>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
@@ -412,7 +499,7 @@
                         </div>
                     </div>
                     <div class="w-full rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 relative">
-                        <img src="logo-variacao-01.png" alt="Prancha de Aplicação da Marca" class="w-full object-cover transform group-hover:scale-[1.02] transition-transform duration-700">
+                        <img src="logo-variacao-01.png" alt="Prancha de Aplicação da Marca" class="w-full object-cover transform group-hover:scale-[1.02] transition-transform duration-700 lightbox-trigger" data-caption="Prancha Oficial — Variações da Marca">
                     </div>
                 </div>
             </div>
@@ -435,17 +522,87 @@
             <div class="flex flex-col gap-16">
                 <!-- Padrões Visuais -->
                 <div class="fade-in-up w-full rounded-[2rem] overflow-hidden shadow-xl bg-white border border-gray-100 hover:shadow-2xl hover:shadow-brand-light-blue/20 transition-all duration-500 transform hover:-translate-y-2 group">
-                    <img src="padroes.png" alt="Padrões Visuais da Escola Transição" class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-700">
+                    <img src="padroes.png" alt="Padrões Visuais da Escola Transição" class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-700 lightbox-trigger" data-caption="Padrões Visuais da Escola Transição">
                 </div>
 
                 <!-- Materiais Institucionais -->
                 <div class="fade-in-up w-full rounded-[2rem] overflow-hidden shadow-xl bg-white border border-gray-100 hover:shadow-2xl hover:shadow-brand-deep-blue/20 transition-all duration-500 transform hover:-translate-y-2 group">
-                    <img src="aplicacoes.png" alt="Aplicações em Materiais e Vestuário" class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-700">
+                    <img src="aplicacoes.png" alt="Aplicações em Materiais e Vestuário" class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-700 lightbox-trigger" data-caption="Aplicações em Materiais e Vestuário">
                 </div>
 
                 <!-- Redes Sociais -->
                 <div class="fade-in-up w-full rounded-[2rem] overflow-hidden shadow-xl bg-white border border-gray-100 hover:shadow-2xl hover:shadow-brand-yellow/20 transition-all duration-500 transform hover:-translate-y-2 group">
-                    <img src="redes-sociais.png" alt="Aplicações em Redes Sociais" class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-700">
+                    <img src="redes-sociais.png" alt="Aplicações em Redes Sociais" class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-700 lightbox-trigger" data-caption="Aplicações em Redes Sociais">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Espaço Físico Section -->
+    <section id="espaco" class="section-padding bg-white overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-sky-blue/40 rounded-full mix-blend-multiply filter blur-[100px] opacity-60 pointer-events-none transform translate-x-1/3 -translate-y-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-brand-turquoise/20 rounded-full mix-blend-multiply filter blur-[100px] opacity-60 pointer-events-none transform -translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-sm font-bold text-brand-light-blue tracking-wider uppercase mb-4">Nosso Espaço</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-brand-deep-blue">A Escola por Dentro e por Fora</h3>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto text-lg">Um ambiente pensado para acolher, inspirar e transformar. Cada detalhe reflete nossa identidade e o cuidado com cada criança.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Fachada -->
+                <div class="fade-in-up group relative rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-brand-deep-blue/20 transition-all duration-500 transform hover:-translate-y-2 cursor-pointer">
+                    <img src="fachada.jpg" alt="Fachada da Escola Transição" class="w-full h-full object-cover transform group-hover:scale-[1.04] transition-transform duration-700 lightbox-trigger" style="min-height: 400px;" data-caption="Fachada da Escola Transição">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-deep-blue/80 via-brand-deep-blue/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                        <span class="inline-block px-3 py-1 bg-brand-yellow text-brand-deep-blue text-xs font-bold rounded-full mb-2 uppercase tracking-wider">Fachada</span>
+                        <h4 class="text-white text-2xl font-bold">Uma entrada que inspira confiança</h4>
+                        <p class="text-white/80 text-sm mt-1">Cada criança, um jeito único de aprender.</p>
+                    </div>
+                </div>
+
+                <!-- Interior -->
+                <div class="fade-in-up group relative rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-brand-light-blue/20 transition-all duration-500 transform hover:-translate-y-2 cursor-pointer" style="transition-delay: 150ms;">
+                    <img src="interno-antes.jpg" alt="Sala de aula da Escola Transição" class="w-full h-full object-cover transform group-hover:scale-[1.04] transition-transform duration-700 lightbox-trigger" style="min-height: 400px;" data-caption="Sala de Aula — Escola Transição">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-deep-blue/80 via-brand-deep-blue/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                        <span class="inline-block px-3 py-1 bg-brand-light-blue text-white text-xs font-bold rounded-full mb-2 uppercase tracking-wider">Interior</span>
+                        <h4 class="text-white text-2xl font-bold">Ambiente que acolhe e transforma</h4>
+                        <p class="text-white/80 text-sm mt-1">Neurociência, afeto, desenvolvimento e futuro.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destaques do espaço -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-12 fade-in-up">
+                <div class="text-center p-6 rounded-2xl bg-brand-sky-blue/40 hover:bg-brand-sky-blue transition duration-300">
+                    <div class="w-14 h-14 mx-auto mb-3 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-deep-blue text-2xl">
+                        <i class="ri-brain-line"></i>
+                    </div>
+                    <h5 class="font-bold text-brand-deep-blue text-sm">Neurociência</h5>
+                    <p class="text-xs text-gray-500 mt-1">que transforma</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-pink-50 hover:bg-pink-100 transition duration-300">
+                    <div class="w-14 h-14 mx-auto mb-3 bg-white rounded-full flex items-center justify-center shadow-sm text-pink-500 text-2xl">
+                        <i class="ri-heart-3-line"></i>
+                    </div>
+                    <h5 class="font-bold text-brand-deep-blue text-sm">Afeto</h5>
+                    <p class="text-xs text-gray-500 mt-1">que acolhe</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-brand-turquoise/10 hover:bg-brand-turquoise/20 transition duration-300">
+                    <div class="w-14 h-14 mx-auto mb-3 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-turquoise text-2xl">
+                        <i class="ri-seedling-line"></i>
+                    </div>
+                    <h5 class="font-bold text-brand-deep-blue text-sm">Desenvolvimento</h5>
+                    <p class="text-xs text-gray-500 mt-1">que prepara pra vida</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-brand-yellow/10 hover:bg-brand-yellow/20 transition duration-300">
+                    <div class="w-14 h-14 mx-auto mb-3 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-yellow text-2xl">
+                        <i class="ri-line-chart-line"></i>
+                    </div>
+                    <h5 class="font-bold text-brand-deep-blue text-sm">Futuro</h5>
+                    <p class="text-xs text-gray-500 mt-1">que se constrói hoje</p>
                 </div>
             </div>
         </div>
@@ -576,6 +733,41 @@
 
             const fadeElements = document.querySelectorAll('.fade-in-up');
             fadeElements.forEach(el => observer.observe(el));
+
+            // --- Lightbox ---
+            const lightbox     = document.getElementById('lightbox');
+            const lightboxImg  = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+
+            function openLightbox(src, caption) {
+                lightboxImg.src = src;
+                lightboxCaption.textContent = caption || '';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+                setTimeout(() => { lightboxImg.src = ''; }, 400);
+            }
+
+            document.querySelectorAll('.lightbox-trigger').forEach(img => {
+                img.addEventListener('click', () => {
+                    openLightbox(img.src, img.dataset.caption);
+                });
+            });
+
+            lightboxClose.addEventListener('click', closeLightbox);
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeLightbox();
+            });
         });
     </script>
 </body>
